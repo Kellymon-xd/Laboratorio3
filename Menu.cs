@@ -16,5 +16,11 @@ namespace Laboratorio3
         {
             InitializeComponent();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            E3 e3 = new E3();
+            e3.Show();
+        }
     }
 }
