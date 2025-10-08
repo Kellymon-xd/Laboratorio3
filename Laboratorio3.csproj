@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Verificar.cs" />
     <EmbeddedResource Include="E1.resx">
       <DependentUpon>E1.cs</DependentUpon>
     </EmbeddedResource>
