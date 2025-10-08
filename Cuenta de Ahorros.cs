@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Laboratorio3
 {
-    public partial class E1 : Form
+    public partial class Cuenta_de_Ahorros : Form
     {
-        public E1()
+        public Cuenta_de_Ahorros()
         {
             InitializeComponent();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
