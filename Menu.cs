@@ -25,5 +25,23 @@ namespace Laboratorio3
             E3 e3 = new E3();
             e3.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            E4 e4 = new E4();
+            e4.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            E2 e2 = new E2();
+            e2.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            E1 e1 = new E1();
+            e1.Show();
+        }
     }
 }

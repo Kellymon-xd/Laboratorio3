@@ -16,7 +16,7 @@ namespace Laboratorio3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new E4());
+            Application.Run(new Menu());
         }
     }
 }
