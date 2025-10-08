@@ -28,8 +28,8 @@ namespace Laboratorio3
 
         public string Titulo
         {
-            get { return lblTitle.Text; }   // Getter
-            set { lblTitle.Text = value; }  // Setter
+            get { return lblTitle.Text; }
+            set { lblTitle.Text = value; }
         }
     }
 }

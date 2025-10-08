@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,8 @@ namespace Laboratorio3
     {
         public Menu()
         {
+            SoundPlayer player = new SoundPlayer(@"img/Super Mario 3D World 8 Bit Remix.wav");
+            player.PlayLooping();
             InitializeComponent();
         }
 
