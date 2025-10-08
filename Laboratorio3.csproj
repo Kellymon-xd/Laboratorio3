@@ -64,6 +64,12 @@
     <Compile Include="E3.Designer.cs">
       <DependentUpon>E3.cs</DependentUpon>
     </Compile>
+    <Compile Include="E32.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="E32.Designer.cs">
+      <DependentUpon>E32.cs</DependentUpon>
+    </Compile>
     <Compile Include="E4.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="E3.resx">
       <DependentUpon>E3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="E32.resx">
+      <DependentUpon>E32.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="E4.resx">
       <DependentUpon>E4.cs</DependentUpon>
@@ -115,6 +124,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\Super Mario 3D World 8 Bit Remix.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\view-of-panama-city-and-ocean-with-white-sky-image_2914213.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
