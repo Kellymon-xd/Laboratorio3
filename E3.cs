@@ -85,8 +85,7 @@ namespace Laboratorio3
             {
                 dataGridView2.Columns.Add("", "");
             }
-            dataGridView2.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-            dataGridView2.GridColor = Color.Black;
+            
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.RowHeadersVisible = false;
             dataGridView2.ColumnHeadersVisible = false;
@@ -98,8 +97,7 @@ namespace Laboratorio3
             {
                 dataGridView1.Columns.Add("", "");
             }
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-            dataGridView1.GridColor = Color.Black;
+            
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.ColumnHeadersVisible = false;
@@ -128,39 +126,6 @@ namespace Laboratorio3
                 }
                 dataGridView1.Rows.Add(fila);
             }
-
-
-            /*
-            // Configuración DataGridView1
-            dataGridView1.Columns.Clear();
-            dataGridView1.ColumnCount = 1;
-            dataGridView1.Columns[0].Name = "Ventas (75 - 215)";
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-            dataGridView1.GridColor = Color.Black;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Rows.Clear();
-
-            // Configuración DataGridView2
-            dataGridView2.Columns.Clear();
-            dataGridView2.ColumnCount = 1;
-            dataGridView2.Columns[0].Name = "Todas las Ventas";
-            dataGridView2.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-            dataGridView2.GridColor = Color.Black;
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.RowHeadersVisible = false;
-            dataGridView2.Rows.Clear();
-
-
-            foreach (var v in ventas)
-            {
-                dataGridView2.Rows.Add(v);
-                if (v >= 75 && v <= 215)
-                {
-                    dataGridView1.Rows.Add(v);
-                }
-            }
-            */
 
             txtVentasRealizadas.Text = "" + cantVentas;
 

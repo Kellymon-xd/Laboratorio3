@@ -20,10 +20,60 @@ namespace Laboratorio3
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void enunciado1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            E3 e3 = new E3();
-            e3.Show();
+            AbrirFormulario(new E1());
         }
+
+        private void enunciado2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new E2());
+        }
+
+        private void enunciado3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new E3());
+        }
+
+        private void enunciado4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new E4());
+        }
+
+        private void AbrirFormulario(Form formHijo)
+        {
+            // Cerrar hijos anteriores
+            foreach (Form frm in this.MdiChildren)
+                frm.Close();
+
+            // Configurar hijo como panel integrado
+            formHijo.MdiParent = this;
+            formHijo.FormBorderStyle = FormBorderStyle.None;
+            formHijo.StartPosition = FormStartPosition.Manual;
+            formHijo.Show();
+
+            // Altura de la barra de menú (si existe)
+            int menuHeight = 0;
+            foreach (Control c in this.Controls)
+            {
+                if (c is MenuStrip)
+                {
+                    menuHeight = c.Height;
+                    break;
+                }
+            }
+
+            // Diferencia entre tamaño total de ventana y ClientSize (bordes y barra de título)
+            int widthDiff = this.Width - this.ClientSize.Width;
+            int heightDiff = this.Height - this.ClientSize.Height;
+
+            // Ajustar tamaño total de la ventana padre
+            this.Width = formHijo.Width + widthDiff;
+            this.Height = formHijo.Height + heightDiff + menuHeight;
+
+            // Llenar área del MDI
+            formHijo.Dock = DockStyle.Fill;
+        }
+
     }
 }

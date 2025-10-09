@@ -86,6 +86,7 @@
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(175, 98);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(92, 89);
             this.pictureBox1.TabIndex = 2;
@@ -96,9 +97,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Baskerville Old Face", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.BlueViolet;
-            this.label3.Location = new System.Drawing.Point(127, 36);
+            this.label3.Location = new System.Drawing.Point(144, 32);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(184, 38);
+            this.label3.Size = new System.Drawing.Size(150, 31);
             this.label3.TabIndex = 3;
             this.label3.Text = "REGISTRO";
             // 
@@ -110,33 +111,37 @@
             this.label4.Size = new System.Drawing.Size(93, 33);
             this.label4.TabIndex = 4;
             this.label4.Text = "Nombre:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Sitka Display", 12F);
-            this.label5.Location = new System.Drawing.Point(69, 253);
+            this.label5.Location = new System.Drawing.Point(53, 255);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 33);
+            this.label5.Size = new System.Drawing.Size(107, 33);
             this.label5.TabIndex = 5;
             this.label5.Text = "Apellido:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Sitka Display", 12F);
-            this.label6.Location = new System.Drawing.Point(79, 286);
+            this.label6.Location = new System.Drawing.Point(64, 284);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 33);
             this.label6.TabIndex = 6;
             this.label6.Text = "Correo:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Sitka Display", 12F);
-            this.label7.Location = new System.Drawing.Point(43, 320);
+            this.label7.Location = new System.Drawing.Point(73, 320);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(147, 33);
+            this.label7.Size = new System.Drawing.Size(87, 33);
             this.label7.TabIndex = 7;
             this.label7.Text = "Contraseña:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnRegistro
             // 
@@ -144,8 +149,9 @@
             this.btnRegistro.BackColor = System.Drawing.Color.MediumPurple;
             this.btnRegistro.ForeColor = System.Drawing.SystemColors.Window;
             this.btnRegistro.Location = new System.Drawing.Point(157, 388);
+            this.btnRegistro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRegistro.Name = "btnRegistro";
-            this.btnRegistro.Size = new System.Drawing.Size(123, 39);
+            this.btnRegistro.Size = new System.Drawing.Size(125, 39);
             this.btnRegistro.TabIndex = 8;
             this.btnRegistro.Text = "REGISTRARSE";
             this.btnRegistro.UseVisualStyleBackColor = false;
@@ -154,6 +160,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(172, 229);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(208, 22);
             this.txtNombre.TabIndex = 9;
@@ -163,6 +170,7 @@
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(172, 262);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(208, 22);
             this.txtApellido.TabIndex = 10;
@@ -172,6 +180,7 @@
             // txtCorreo
             // 
             this.txtCorreo.Location = new System.Drawing.Point(172, 295);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(208, 22);
             this.txtCorreo.TabIndex = 11;
@@ -182,7 +191,8 @@
             // 
             // txtContraseña
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(172, 328);
+            this.txtContraseña.Location = new System.Drawing.Point(172, 327);
+            this.txtContraseña.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '*';
             this.txtContraseña.Size = new System.Drawing.Size(208, 22);
@@ -201,9 +211,10 @@
             // 
             this.pnlReq.Controls.Add(this.grpCor);
             this.pnlReq.Controls.Add(this.grpPass);
-            this.pnlReq.Location = new System.Drawing.Point(51, 453);
+            this.pnlReq.Location = new System.Drawing.Point(26, 453);
+            this.pnlReq.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlReq.Name = "pnlReq";
-            this.pnlReq.Size = new System.Drawing.Size(356, 101);
+            this.pnlReq.Size = new System.Drawing.Size(397, 101);
             this.pnlReq.TabIndex = 15;
             // 
             // grpCor
@@ -212,9 +223,11 @@
             this.grpCor.Controls.Add(this.lblReqCor3);
             this.grpCor.Controls.Add(this.lblReqCor1);
             this.grpCor.Controls.Add(this.lblReqCor2);
-            this.grpCor.Location = new System.Drawing.Point(5, 5);
+            this.grpCor.Location = new System.Drawing.Point(3, 5);
+            this.grpCor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grpCor.Name = "grpCor";
-            this.grpCor.Size = new System.Drawing.Size(345, 92);
+            this.grpCor.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpCor.Size = new System.Drawing.Size(372, 92);
             this.grpCor.TabIndex = 5;
             this.grpCor.TabStop = false;
             this.grpCor.Text = "Requisitos para el correo:";
@@ -224,7 +237,7 @@
             this.lblReqCor3.AutoSize = true;
             this.lblReqCor3.Location = new System.Drawing.Point(13, 49);
             this.lblReqCor3.Name = "lblReqCor3";
-            this.lblReqCor3.Size = new System.Drawing.Size(328, 16);
+            this.lblReqCor3.Size = new System.Drawing.Size(345, 16);
             this.lblReqCor3.TabIndex = 3;
             this.lblReqCor3.Text = "Terminar en: @gmail.com, @hotmail.com, @utp.ac.pa";
             // 
@@ -233,7 +246,7 @@
             this.lblReqCor1.AutoSize = true;
             this.lblReqCor1.Location = new System.Drawing.Point(13, 18);
             this.lblReqCor1.Name = "lblReqCor1";
-            this.lblReqCor1.Size = new System.Drawing.Size(78, 16);
+            this.lblReqCor1.Size = new System.Drawing.Size(77, 16);
             this.lblReqCor1.TabIndex = 1;
             this.lblReqCor1.Text = "Solo un \'@\'.";
             // 
@@ -242,7 +255,7 @@
             this.lblReqCor2.AutoSize = true;
             this.lblReqCor2.Location = new System.Drawing.Point(13, 33);
             this.lblReqCor2.Name = "lblReqCor2";
-            this.lblReqCor2.Size = new System.Drawing.Size(216, 16);
+            this.lblReqCor2.Size = new System.Drawing.Size(221, 16);
             this.lblReqCor2.TabIndex = 2;
             this.lblReqCor2.Text = "Al menos un carácter antes del \'@\'.";
             // 
@@ -253,7 +266,9 @@
             this.grpPass.Controls.Add(this.lblReqPass3);
             this.grpPass.Controls.Add(this.lblReqPass1);
             this.grpPass.Location = new System.Drawing.Point(8, 5);
+            this.grpPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grpPass.Name = "grpPass";
+            this.grpPass.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grpPass.Size = new System.Drawing.Size(331, 92);
             this.grpPass.TabIndex = 0;
             this.grpPass.TabStop = false;
@@ -262,9 +277,9 @@
             // lblReqPass4
             // 
             this.lblReqPass4.AutoSize = true;
-            this.lblReqPass4.Location = new System.Drawing.Point(26, 66);
+            this.lblReqPass4.Location = new System.Drawing.Point(27, 66);
             this.lblReqPass4.Name = "lblReqPass4";
-            this.lblReqPass4.Size = new System.Drawing.Size(278, 16);
+            this.lblReqPass4.Size = new System.Drawing.Size(299, 16);
             this.lblReqPass4.TabIndex = 4;
             this.lblReqPass4.Text = "Mínimo 1 carácter especial (!, @, #, $, %, ^, &, *) ";
             // 
@@ -273,25 +288,25 @@
             this.lblReqPass2.AutoSize = true;
             this.lblReqPass2.Location = new System.Drawing.Point(25, 18);
             this.lblReqPass2.Name = "lblReqPass2";
-            this.lblReqPass2.Size = new System.Drawing.Size(85, 16);
+            this.lblReqPass2.Size = new System.Drawing.Size(88, 16);
             this.lblReqPass2.TabIndex = 2;
             this.lblReqPass2.Text = "1 mayúscula.";
             // 
             // lblReqPass3
             // 
             this.lblReqPass3.AutoSize = true;
-            this.lblReqPass3.Location = new System.Drawing.Point(26, 50);
+            this.lblReqPass3.Location = new System.Drawing.Point(27, 50);
             this.lblReqPass3.Name = "lblReqPass3";
-            this.lblReqPass3.Size = new System.Drawing.Size(99, 16);
+            this.lblReqPass3.Size = new System.Drawing.Size(108, 16);
             this.lblReqPass3.TabIndex = 3;
             this.lblReqPass3.Text = "Mínimo 1 dígito.";
             // 
             // lblReqPass1
             // 
             this.lblReqPass1.AutoSize = true;
-            this.lblReqPass1.Location = new System.Drawing.Point(26, 34);
+            this.lblReqPass1.Location = new System.Drawing.Point(27, 34);
             this.lblReqPass1.Name = "lblReqPass1";
-            this.lblReqPass1.Size = new System.Drawing.Size(137, 16);
+            this.lblReqPass1.Size = new System.Drawing.Size(145, 16);
             this.lblReqPass1.TabIndex = 1;
             this.lblReqPass1.Text = "Mínimo 12 carácteres.";
             // 
@@ -301,7 +316,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(454, 581);
+            this.ClientSize = new System.Drawing.Size(453, 581);
             this.Controls.Add(this.pnlReq);
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtCorreo);
@@ -314,8 +329,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox1);
+            this.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "E4";
