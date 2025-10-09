@@ -16,5 +16,10 @@ namespace Laboratorio3
         {
             InitializeComponent();
         }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

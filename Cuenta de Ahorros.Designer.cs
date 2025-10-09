@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblDepositos = new System.Windows.Forms.Label();
-            this.lblRetiros = new System.Windows.Forms.Label();
-            this.lblSaldo = new System.Windows.Forms.Label();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.txtSaldo = new System.Windows.Forms.TextBox();
-            this.ltbRetiros = new System.Windows.Forms.ListBox();
             this.ltbDepositos = new System.Windows.Forms.ListBox();
+            this.ltbRetiros = new System.Windows.Forms.ListBox();
+            this.txtSaldo = new System.Windows.Forms.TextBox();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.lblSaldo = new System.Windows.Forms.Label();
+            this.lblRetiros = new System.Windows.Forms.Label();
+            this.lblDepositos = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,35 +56,43 @@
             this.panel1.Size = new System.Drawing.Size(533, 242);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // ltbDepositos
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Cuenta de Ahorros";
+            this.ltbDepositos.FormattingEnabled = true;
+            this.ltbDepositos.Location = new System.Drawing.Point(213, 94);
+            this.ltbDepositos.Name = "ltbDepositos";
+            this.ltbDepositos.Size = new System.Drawing.Size(120, 134);
+            this.ltbDepositos.TabIndex = 9;
+            this.ltbDepositos.SelectedIndexChanged += new System.EventHandler(this.ltbDepositos_SelectedIndexChanged);
             // 
-            // lblDepositos
+            // ltbRetiros
             // 
-            this.lblDepositos.AutoSize = true;
-            this.lblDepositos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDepositos.Location = new System.Drawing.Point(228, 75);
-            this.lblDepositos.Name = "lblDepositos";
-            this.lblDepositos.Size = new System.Drawing.Size(78, 16);
-            this.lblDepositos.TabIndex = 1;
-            this.lblDepositos.Text = "Depositos";
+            this.ltbRetiros.FormattingEnabled = true;
+            this.ltbRetiros.Location = new System.Drawing.Point(30, 94);
+            this.ltbRetiros.Name = "ltbRetiros";
+            this.ltbRetiros.Size = new System.Drawing.Size(120, 134);
+            this.ltbRetiros.TabIndex = 8;
+            this.ltbRetiros.SelectedIndexChanged += new System.EventHandler(this.ltbRetiros_SelectedIndexChanged);
             // 
-            // lblRetiros
+            // txtSaldo
             // 
-            this.lblRetiros.AutoSize = true;
-            this.lblRetiros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRetiros.Location = new System.Drawing.Point(29, 75);
-            this.lblRetiros.Name = "lblRetiros";
-            this.lblRetiros.Size = new System.Drawing.Size(57, 16);
-            this.lblRetiros.TabIndex = 2;
-            this.lblRetiros.Text = "Retiros";
+            this.txtSaldo.Location = new System.Drawing.Point(404, 131);
+            this.txtSaldo.Name = "txtSaldo";
+            this.txtSaldo.ReadOnly = true;
+            this.txtSaldo.Size = new System.Drawing.Size(100, 20);
+            this.txtSaldo.TabIndex = 7;
+            this.txtSaldo.TextChanged += new System.EventHandler(this.txtSaldo_TextChanged);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.Location = new System.Drawing.Point(377, 190);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(116, 23);
+            this.btnNuevo.TabIndex = 6;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // lblSaldo
             // 
@@ -96,39 +104,35 @@
             this.lblSaldo.TabIndex = 5;
             this.lblSaldo.Text = "Saldo";
             // 
-            // btnNuevo
+            // lblRetiros
             // 
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.Location = new System.Drawing.Point(377, 190);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(116, 23);
-            this.btnNuevo.TabIndex = 6;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.lblRetiros.AutoSize = true;
+            this.lblRetiros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRetiros.Location = new System.Drawing.Point(29, 75);
+            this.lblRetiros.Name = "lblRetiros";
+            this.lblRetiros.Size = new System.Drawing.Size(57, 16);
+            this.lblRetiros.TabIndex = 2;
+            this.lblRetiros.Text = "Retiros";
             // 
-            // txtSaldo
+            // lblDepositos
             // 
-            this.txtSaldo.Location = new System.Drawing.Point(404, 131);
-            this.txtSaldo.Name = "txtSaldo";
-            this.txtSaldo.ReadOnly = true;
-            this.txtSaldo.Size = new System.Drawing.Size(100, 20);
-            this.txtSaldo.TabIndex = 7;
+            this.lblDepositos.AutoSize = true;
+            this.lblDepositos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDepositos.Location = new System.Drawing.Point(228, 75);
+            this.lblDepositos.Name = "lblDepositos";
+            this.lblDepositos.Size = new System.Drawing.Size(78, 16);
+            this.lblDepositos.TabIndex = 1;
+            this.lblDepositos.Text = "Depositos";
             // 
-            // ltbRetiros
+            // label1
             // 
-            this.ltbRetiros.FormattingEnabled = true;
-            this.ltbRetiros.Location = new System.Drawing.Point(30, 94);
-            this.ltbRetiros.Name = "ltbRetiros";
-            this.ltbRetiros.Size = new System.Drawing.Size(120, 134);
-            this.ltbRetiros.TabIndex = 8;
-            // 
-            // ltbDepositos
-            // 
-            this.ltbDepositos.FormattingEnabled = true;
-            this.ltbDepositos.Location = new System.Drawing.Point(213, 94);
-            this.ltbDepositos.Name = "ltbDepositos";
-            this.ltbDepositos.Size = new System.Drawing.Size(120, 134);
-            this.ltbDepositos.TabIndex = 9;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(135, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Cuenta de Ahorros";
             // 
             // Cuenta_de_Ahorros
             // 

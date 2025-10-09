@@ -86,6 +86,7 @@
             this.btnAbrirCuenta.TabIndex = 2;
             this.btnAbrirCuenta.Text = "Abrir Cuenta";
             this.btnAbrirCuenta.UseVisualStyleBackColor = true;
+            this.btnAbrirCuenta.Click += new System.EventHandler(this.btnAbrirCuenta_Click);
             // 
             // lblMontoInicial
             // 

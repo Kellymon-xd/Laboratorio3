@@ -52,6 +52,7 @@
     <Compile Include="Cuenta de Ahorros.Designer.cs">
       <DependentUpon>Cuenta de Ahorros.cs</DependentUpon>
     </Compile>
+    <Compile Include="CuentaBancaria.cs" />
     <Compile Include="E1.cs">
       <SubType>Form</SubType>
     </Compile>

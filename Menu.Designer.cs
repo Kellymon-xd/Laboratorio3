@@ -40,6 +40,7 @@
             this.MinimizeBox = false;
             this.Name = "Menu";
             this.Text = "Laboratorio 3";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
 
         }
