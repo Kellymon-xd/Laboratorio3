@@ -42,17 +42,14 @@ namespace Laboratorio3
 
         private void AbrirFormulario(Form formHijo)
         {
-            // Cerrar hijos anteriores
             foreach (Form frm in this.MdiChildren)
                 frm.Close();
 
-            // Configurar hijo como panel integrado
             formHijo.MdiParent = this;
             formHijo.FormBorderStyle = FormBorderStyle.None;
             formHijo.StartPosition = FormStartPosition.Manual;
             formHijo.Show();
 
-            // Altura de la barra de menú (si existe)
             int menuHeight = 0;
             foreach (Control c in this.Controls)
             {
@@ -63,17 +60,13 @@ namespace Laboratorio3
                 }
             }
 
-            // Diferencia entre tamaño total de ventana y ClientSize (bordes y barra de título)
             int widthDiff = this.Width - this.ClientSize.Width;
             int heightDiff = this.Height - this.ClientSize.Height;
 
-            // Ajustar tamaño total de la ventana padre
             this.Width = formHijo.Width + widthDiff;
             this.Height = formHijo.Height + heightDiff + menuHeight;
 
-            // Llenar área del MDI
             formHijo.Dock = DockStyle.Fill;
         }
-
     }
 }

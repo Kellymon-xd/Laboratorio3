@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 
 namespace Laboratorio3
@@ -83,7 +84,6 @@ namespace Laboratorio3
         {
             if (!validadorCampos.EsValido(campo.Text))
             {
-                e.Cancel = true;
                 erpError.SetError(campo, "No puede dejar el campo en blanco.");
             }
             else
@@ -108,7 +108,6 @@ namespace Laboratorio3
 
             if (!validador.EsValido(txtCorreo.Text))
             {
-                e.Cancel = true;
                 erpError.SetError(txtCorreo, "El correo no cumple con los requisitos.");
             }
             else
@@ -123,7 +122,6 @@ namespace Laboratorio3
 
             if (!validador.EsValido(txtContraseña.Text))
             {
-                e.Cancel = true;
                 erpError.SetError(txtContraseña, "La contraseña no cumple con los requisitos.");
             }
             else
@@ -217,6 +215,15 @@ namespace Laboratorio3
             lblReqPass4.ForeColor = pass.Any(c => "!@#$%^&*".Contains(c))
                 ? Color.Green
                 : Color.Red;
+        }
+
+        private void E4_Load(object sender, EventArgs e)
+        {
+            lblTitle.Left= (this.ClientSize.Width - lblTitle.Width) / 2;
+            pnlReq.Left = (this.ClientSize.Width - pnlReq.Width) / 2;
+            grpCor.Left = (this.ClientSize.Width - grpCor.Width) / 2;
+            grpPass.Left = (this.ClientSize.Width - grpPass.Width) / 2;
+            btnRegistro.Left = (this.ClientSize.Width - btnRegistro.Width) / 2;
         }
     }
 }
