@@ -20,28 +20,36 @@ namespace Laboratorio3
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void enunciado1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            E3 e3 = new E3();
-            e3.Show();
+            E1 e1 = new E1();
+            e1.MdiParent = this;
+            e1.WindowState = FormWindowState.Maximized;
+            e1.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            E4 e4 = new E4();
-            e4.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void enunciado2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             E2 e2 = new E2();
+            e2.MdiParent = this;
+            e2.WindowState = FormWindowState.Maximized;
             e2.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void enunciado3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            E1 e1 = new E1();
-            e1.Show();
+            E3 e3 = new E3();
+            e3.MdiParent = this;
+            e3.WindowState = FormWindowState.Maximized;
+            e3.Show();
+        }
+
+        private void enunciado4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            E4 e4 = new E4();
+            e4.MdiParent = this;
+            e4.WindowState = FormWindowState.Maximized;
+            e4.Show();
         }
     }
 }
