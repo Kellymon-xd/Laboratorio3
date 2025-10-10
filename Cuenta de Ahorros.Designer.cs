@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblSaldoActual = new System.Windows.Forms.Label();
+            this.txtSaldoActual = new System.Windows.Forms.TextBox();
             this.ltbDepositos = new System.Windows.Forms.ListBox();
             this.ltbRetiros = new System.Windows.Forms.ListBox();
             this.txtSaldo = new System.Windows.Forms.TextBox();
@@ -37,12 +39,16 @@
             this.lblRetiros = new System.Windows.Forms.Label();
             this.lblDepositos = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnConfirmar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.btnConfirmar);
+            this.panel1.Controls.Add(this.lblSaldoActual);
+            this.panel1.Controls.Add(this.txtSaldoActual);
             this.panel1.Controls.Add(this.ltbDepositos);
             this.panel1.Controls.Add(this.ltbRetiros);
             this.panel1.Controls.Add(this.txtSaldo);
@@ -56,6 +62,25 @@
             this.panel1.Size = new System.Drawing.Size(533, 242);
             this.panel1.TabIndex = 0;
             // 
+            // lblSaldoActual
+            // 
+            this.lblSaldoActual.AutoSize = true;
+            this.lblSaldoActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSaldoActual.Location = new System.Drawing.Point(401, 109);
+            this.lblSaldoActual.Name = "lblSaldoActual";
+            this.lblSaldoActual.Size = new System.Drawing.Size(91, 16);
+            this.lblSaldoActual.TabIndex = 11;
+            this.lblSaldoActual.Text = "SaldoActual";
+            // 
+            // txtSaldoActual
+            // 
+            this.txtSaldoActual.Location = new System.Drawing.Point(404, 137);
+            this.txtSaldoActual.Name = "txtSaldoActual";
+            this.txtSaldoActual.ReadOnly = true;
+            this.txtSaldoActual.Size = new System.Drawing.Size(100, 20);
+            this.txtSaldoActual.TabIndex = 10;
+            this.txtSaldoActual.TextChanged += new System.EventHandler(this.txtSaldoActual_TextChanged);
+            // 
             // ltbDepositos
             // 
             this.ltbDepositos.FormattingEnabled = true;
@@ -64,6 +89,7 @@
             this.ltbDepositos.Size = new System.Drawing.Size(120, 134);
             this.ltbDepositos.TabIndex = 9;
             this.ltbDepositos.SelectedIndexChanged += new System.EventHandler(this.ltbDepositos_SelectedIndexChanged);
+            this.ltbDepositos.DoubleClick += new System.EventHandler(this.ltbDepositos_DoubleClick);
             // 
             // ltbRetiros
             // 
@@ -76,7 +102,7 @@
             // 
             // txtSaldo
             // 
-            this.txtSaldo.Location = new System.Drawing.Point(404, 131);
+            this.txtSaldo.Location = new System.Drawing.Point(404, 75);
             this.txtSaldo.Name = "txtSaldo";
             this.txtSaldo.ReadOnly = true;
             this.txtSaldo.Size = new System.Drawing.Size(100, 20);
@@ -86,7 +112,7 @@
             // btnNuevo
             // 
             this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.Location = new System.Drawing.Point(377, 190);
+            this.btnNuevo.Location = new System.Drawing.Point(388, 171);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(116, 23);
             this.btnNuevo.TabIndex = 6;
@@ -98,11 +124,11 @@
             // 
             this.lblSaldo.AutoSize = true;
             this.lblSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaldo.Location = new System.Drawing.Point(426, 85);
+            this.lblSaldo.Location = new System.Drawing.Point(392, 35);
             this.lblSaldo.Name = "lblSaldo";
-            this.lblSaldo.Size = new System.Drawing.Size(48, 16);
+            this.lblSaldo.Size = new System.Drawing.Size(112, 16);
             this.lblSaldo.TabIndex = 5;
-            this.lblSaldo.Text = "Saldo";
+            this.lblSaldo.Text = "Monto Apertura";
             // 
             // lblRetiros
             // 
@@ -134,6 +160,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Cuenta de Ahorros";
             // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmar.Location = new System.Drawing.Point(388, 205);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(116, 23);
+            this.btnConfirmar.TabIndex = 12;
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            // 
             // Cuenta_de_Ahorros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,5 +196,8 @@
         private System.Windows.Forms.Label lblSaldo;
         private System.Windows.Forms.ListBox ltbDepositos;
         private System.Windows.Forms.ListBox ltbRetiros;
+        private System.Windows.Forms.Label lblSaldoActual;
+        private System.Windows.Forms.TextBox txtSaldoActual;
+        private System.Windows.Forms.Button btnConfirmar;
     }
 }

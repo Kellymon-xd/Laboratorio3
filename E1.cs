@@ -27,12 +27,13 @@ namespace Laboratorio3
         {
             String nombre;
             int monto;
-            CuentaBancaria cuenta=new CuentaBancaria();
+          
             nombre =txtCliente.Text;
             monto=Convert.ToInt32(txtMonto.Text);
-            cuenta.asignar(nombre, monto); 
-            
-            Transacciones transacciones = new Transacciones();
+            CuentaBancaria cuenta = new CuentaBancaria(nombre,monto);
+
+
+            Transacciones transacciones = new Transacciones(cuenta);
             transacciones.Show();
 
 

@@ -11,14 +11,17 @@ namespace Laboratorio3
         private string nombre;
         private int monto;
         private int deposito;
+        private int saldoInicial;
         private int retiro; 
      
 
-        public void asignar (string nombre,int monto)
+       public CuentaBancaria(string nombre, int monto)
         {
             this.nombre = nombre;
             this.monto = monto;
-           
+            this.saldoInicial = monto;
+
+
         }
 
         public int getMonto()
@@ -26,20 +29,26 @@ namespace Laboratorio3
             return monto;
         }
 
-        public String depositar()
+        public int getSaldoInicial()
+        {
+            return saldoInicial;
+        }
+
+        public String depositar(int deposito)
         {
             if (deposito <= 0)
             {
                 return "El monto a depositar debe ser mayor a 0";
             }
             else {
-                monto += deposito;
-                return "Deposito exitoso, su nuevo saldo es: {monto}";
+                monto+= deposito;
+                return $"Deposito exitoso, su nuevo saldo es: {monto}";
             }
             
         }
+     
 
-        public String retirar()
+        public String retirar(int retiro)
         {
             if(retiro>monto)
             {
@@ -48,7 +57,7 @@ namespace Laboratorio3
             else
             {
                 monto -= retiro;
-                return "Retiro exitoso, su nuevo saldo es: {monto}";
+                return $"Retiro exitoso, su nuevo saldo es: {monto}";
             }
         }
     }

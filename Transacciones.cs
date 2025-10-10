@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,14 @@ namespace Laboratorio3
 {
     public partial class Transacciones : Form
     {
-        public Transacciones()
+        private CuentaBancaria cuenta;
+
+        internal Transacciones(CuentaBancaria cuenta)
         {
             InitializeComponent();
-            
-         
+            this.cuenta= cuenta;
+
+
         }
 
   
@@ -30,19 +34,17 @@ namespace Laboratorio3
         {
             if(rbDepositos.Checked==true)
             {
-                CuentaBancaria depositos = new CuentaBancaria();
-               
-                depositos.depositar();
-                Cuenta_de_Ahorros cuenta = new Cuenta_de_Ahorros();
-                cuenta.Show();
+
+
+                Cuenta_de_Ahorros ahorro = new Cuenta_de_Ahorros(cuenta);
+                ahorro.Show();
 
             }
             else if(rbRetiros.Checked==true)
             {
-                CuentaBancaria retiros = new CuentaBancaria();
-                retiros.retirar();
-                Cuenta_de_Ahorros cuenta = new Cuenta_de_Ahorros();
-                cuenta.Show();
+                
+                Cuenta_de_Ahorros ahorro = new Cuenta_de_Ahorros(cuenta);
+                ahorro.Show();
 
             }
         }
