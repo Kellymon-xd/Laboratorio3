@@ -55,7 +55,6 @@ namespace Laboratorio3
                 MessageBox.Show("Ingrese un número válido para eliminar.");
             }
         }
-        
 
         private void ActualizarGrid()
         {
