@@ -45,7 +45,9 @@ namespace Laboratorio3
 
             Dialogo dlgEliminar = new Dialogo();
             dlgEliminar.Titulo = "Ingrese el número a eliminar:";
+
             dlgEliminar.AplicarEstiloForm(this);
+            dlgEliminar.AplicarEstiloBoton(dlgEliminar, Color.LavenderBlush);
 
             if (dlgEliminar.ShowDialog() == DialogResult.OK)
             {
@@ -124,10 +126,11 @@ namespace Laboratorio3
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            if (rdbAleatorio.Checked)
+            if (int.TryParse(txtCantidad.Text, out int cantidad) && cantidad > 0)
             {
-                if (int.TryParse(txtCantidad.Text, out int cantidad) && cantidad > 0)
+                if (rdbAleatorio.Checked)
                 {
+
                     numeros.Clear();
                     for (int i = 0; i < cantidad; i++)
                     {
@@ -136,36 +139,80 @@ namespace Laboratorio3
                     ActualizarGrid();
                     txtCantidad.Clear();
                 }
-                else
+
+                else if (rdbManual.Checked)
                 {
-                    MessageBox.Show("Por favor, ingrese una cantidad de numeros aleatorios a ser ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    for (int i = 0; i < cantidad; i++)
+                    {
+                        Dialogo dlgNumero = new Dialogo();
+                        dlgNumero.Titulo = $"Ingrese el valor No. {i + 1}:";
+                        dlgNumero.AplicarEstiloForm(this);
+                        dlgNumero.AplicarEstiloBoton(dlgNumero, Color.LavenderBlush);
+
+                        if (dlgNumero.ShowDialog() == DialogResult.OK)
+                        {
+                            if (int.TryParse(dlgNumero.ValorIngresado, out int valor) && valor > 0)
+                            {
+                                numeros.Add(valor);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Número inválido, intente de nuevo.");
+                                i--;
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Entrada cancelada.");
+                            cantidad = 0;
+                            break;
+
+                        }
+                    }
+                    if (cantidad != 0) {
+                        txtNumero.Clear();
+                        txtNumero.Focus();
+                        ActualizarGrid();
+                    }
                 }
             }
             else
             {
-                if (int.TryParse(txtNumero.Text, out int numero))
-                {
-                    numeros.Add(numero);
-                    txtNumero.Clear();
-                    txtNumero.Focus();
-                    ActualizarGrid();
-                }
-                else
-                {
-                    MessageBox.Show("Por favor, ingrese un numero valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Por favor, ingrese una cantidad de numeros a ser ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void rdbManual_CheckedChanged(object sender, EventArgs e)
+        private void rdbAgregarNumero_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdbManual.Checked)
+            if (rdbAgregarNumero.Checked)
             {
+                lblNumeroIndividual.Visible = true;
+                lblNumeroIndividual.Enabled = true;
+                txtNumero.Visible = true;
+                txtNumero.Enabled = true;
+                btnAgregar.Enabled = true;
+                btnAgregar.Visible = true;
                 txtNumero.ReadOnly = false;
                 txtNumero.BackColor = Color.White;
                 txtCantidad.ReadOnly = true;
                 txtCantidad.BackColor = Color.LightGray;
+                txtCantidad.ReadOnly = true;
+                txtCantidad.Enabled = false;
+                txtCantidad.Visible = false;
+                lblCantidadAleatoria.Visible = false;
                 txtCantidad.Clear();
+            }
+            else
+            {
+                lblNumeroIndividual.Visible = false;
+                lblNumeroIndividual.Enabled = false;
+                txtNumero.Visible = false;
+                txtNumero.Enabled = false;
+                btnAgregar.Enabled = false;
+                btnAgregar.Visible = false;
+                txtCantidad.Visible = true;
+                lblCantidadAleatoria.Visible = true;
 
             }
         }
@@ -177,6 +224,7 @@ namespace Laboratorio3
                 txtNumero.ReadOnly = true;
                 txtNumero.BackColor = Color.LightGray;
                 txtCantidad.ReadOnly = false;
+                txtCantidad.Enabled = true;
                 txtCantidad.BackColor = Color.White;
                 txtNumero.Clear();
 
@@ -191,6 +239,35 @@ namespace Laboratorio3
                 MessageBox.Show("Borrar lista de numeros!!",
                     "Hermano! Has borrado la lista de numeros!!", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtNumero.Text, out int numero))
+            {
+                numeros.Add(numero);
+                txtNumero.Clear();
+                txtNumero.Focus();
+                ActualizarGrid();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese un numero valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void rdbManual_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbManual.Checked)
+            {
+                txtCantidad.ReadOnly = false;
+                txtCantidad.Enabled = true;
+                txtNumero.ReadOnly = true;
+                txtNumero.BackColor = Color.LightGray;
+                txtCantidad.BackColor = Color.White;
+                txtNumero.Clear();
+
             }
         }
     }

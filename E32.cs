@@ -33,7 +33,6 @@ namespace Laboratorio3
         }
         public void AplicarEstiloForm(Form formulario)
         {
-            // Fondo y color de fuente del diálogo
             this.BackColor = formulario.BackColor;
             this.ForeColor = formulario.ForeColor;
 
@@ -53,6 +52,20 @@ namespace Laboratorio3
                     btn.UseVisualStyleBackColor = false;
                 }
             }
+        }
+        public void AplicarEstiloBoton(Dialogo dlg, Color colorBoton)
+        {
+            Color colorFuente = this.ForeColor;
+            Color colorHover = ControlPaint.Light(colorBoton, 0.2f);
+
+            btnAceptar.BackColor = colorBoton;
+            btnAceptar.ForeColor = colorFuente;
+            btnAceptar.FlatStyle = FlatStyle.Flat;
+            btnAceptar.FlatAppearance.BorderColor = colorFuente;
+            btnAceptar.UseVisualStyleBackColor = false;
+
+            btnAceptar.MouseEnter += (s, e) => btnAceptar.BackColor = colorHover;
+            btnAceptar.MouseLeave += (s, e) => btnAceptar.BackColor = colorBoton;
         }
 
     }
