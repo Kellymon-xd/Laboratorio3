@@ -55,9 +55,11 @@
     </Compile>
     <Compile Include="E2.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="E2.Designer.cs">
       <DependentUpon>E2.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="E3.cs">
       <SubType>Form</SubType>
@@ -91,6 +93,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="E2.resx">
       <DependentUpon>E2.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="E3.resx">
       <DependentUpon>E3.cs</DependentUpon>
@@ -127,6 +130,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\pexels-photo-912110.jpeg" />
     <Content Include="img\Super Mario 3D World 8 Bit Remix.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

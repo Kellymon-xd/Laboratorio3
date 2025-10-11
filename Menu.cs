@@ -20,28 +20,53 @@ namespace Laboratorio3
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void enunciado1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            E3 e3 = new E3();
-            e3.Show();
+            AbrirFormulario(new E1());
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void enunciado2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            E4 e4 = new E4();
-            e4.Show();
+            AbrirFormulario(new E2());
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void enunciado3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            E2 e2 = new E2();
-            e2.Show();
+            AbrirFormulario(new E3());
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void enunciado4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            E1 e1 = new E1();
-            e1.Show();
+            AbrirFormulario(new E4());
+        }
+
+        private void AbrirFormulario(Form formHijo)
+        {
+            foreach (Form frm in this.MdiChildren)
+                frm.Close();
+
+            formHijo.MdiParent = this;
+            formHijo.FormBorderStyle = FormBorderStyle.None;
+            formHijo.StartPosition = FormStartPosition.Manual;
+            formHijo.Show();
+
+            int menuHeight = 0;
+            foreach (Control c in this.Controls)
+            {
+                if (c is MenuStrip)
+                {
+                    menuHeight = c.Height;
+                    break;
+                }
+            }
+
+            int widthDiff = this.Width - this.ClientSize.Width;
+            int heightDiff = this.Height - this.ClientSize.Height;
+
+            this.Width = formHijo.Width + widthDiff;
+            this.Height = formHijo.Height + heightDiff + menuHeight;
+
+            formHijo.Dock = DockStyle.Fill;
         }
     }
 }
