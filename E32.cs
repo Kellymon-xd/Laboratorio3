@@ -31,5 +31,29 @@ namespace Laboratorio3
             get { return lblTitle.Text; }
             set { lblTitle.Text = value; }
         }
+        public void AplicarEstiloForm(Form formulario)
+        {
+            // Fondo y color de fuente del diálogo
+            this.BackColor = formulario.BackColor;
+            this.ForeColor = formulario.ForeColor;
+
+            foreach (Control ctl in this.Controls)
+            {
+                if (ctl is Label || ctl is TextBox)
+                {
+                    ctl.BackColor = formulario.BackColor;
+                    ctl.ForeColor = formulario.ForeColor;
+                }
+                else if (ctl is Button btn)
+                {
+                    btn.BackColor = formulario.BackColor;
+                    btn.ForeColor = formulario.ForeColor;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderColor = formulario.ForeColor; 
+                    btn.UseVisualStyleBackColor = false;
+                }
+            }
+        }
+
     }
 }

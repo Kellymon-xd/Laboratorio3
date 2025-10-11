@@ -46,6 +46,7 @@
             // 
             // dgvNumbers
             // 
+            this.dgvNumbers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvNumbers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNumbers.Location = new System.Drawing.Point(81, 75);
             this.dgvNumbers.Margin = new System.Windows.Forms.Padding(4);
@@ -81,11 +82,12 @@
             // 
             this.groupBox1.Controls.Add(this.rdbAleatorio);
             this.groupBox1.Controls.Add(this.rdbManual);
+            this.groupBox1.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(357, 310);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(175, 145);
+            this.groupBox1.Size = new System.Drawing.Size(175, 99);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Modalidad";
@@ -93,10 +95,11 @@
             // rdbAleatorio
             // 
             this.rdbAleatorio.AutoSize = true;
+            this.rdbAleatorio.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbAleatorio.Location = new System.Drawing.Point(15, 52);
             this.rdbAleatorio.Margin = new System.Windows.Forms.Padding(4);
             this.rdbAleatorio.Name = "rdbAleatorio";
-            this.rdbAleatorio.Size = new System.Drawing.Size(84, 20);
+            this.rdbAleatorio.Size = new System.Drawing.Size(106, 27);
             this.rdbAleatorio.TabIndex = 1;
             this.rdbAleatorio.TabStop = true;
             this.rdbAleatorio.Text = "Aleatorio";
@@ -106,10 +109,11 @@
             // rdbManual
             // 
             this.rdbManual.AutoSize = true;
+            this.rdbManual.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbManual.Location = new System.Drawing.Point(15, 23);
             this.rdbManual.Margin = new System.Windows.Forms.Padding(4);
             this.rdbManual.Name = "rdbManual";
-            this.rdbManual.Size = new System.Drawing.Size(71, 20);
+            this.rdbManual.Size = new System.Drawing.Size(93, 27);
             this.rdbManual.TabIndex = 0;
             this.rdbManual.TabStop = true;
             this.rdbManual.Text = "Manual";
@@ -119,44 +123,50 @@
             // lblNumeroIndividual
             // 
             this.lblNumeroIndividual.AutoSize = true;
-            this.lblNumeroIndividual.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeroIndividual.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumeroIndividual.Location = new System.Drawing.Point(54, 372);
             this.lblNumeroIndividual.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNumeroIndividual.Name = "lblNumeroIndividual";
-            this.lblNumeroIndividual.Size = new System.Drawing.Size(93, 25);
+            this.lblNumeroIndividual.Size = new System.Drawing.Size(96, 25);
             this.lblNumeroIndividual.TabIndex = 4;
             this.lblNumeroIndividual.Text = "Numero:";
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(623, 346);
+            this.btnGenerar.BackColor = System.Drawing.Color.LavenderBlush;
+            this.btnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerar.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerar.Location = new System.Drawing.Point(621, 316);
             this.btnGenerar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(171, 34);
             this.btnGenerar.TabIndex = 5;
             this.btnGenerar.Text = "Generar";
-            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.UseVisualStyleBackColor = false;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(625, 388);
+            this.btnEliminar.BackColor = System.Drawing.Color.LavenderBlush;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(623, 358);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(171, 34);
             this.btnEliminar.TabIndex = 6;
             this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // lblCantidadAleatoria
             // 
             this.lblCantidadAleatoria.AutoSize = true;
-            this.lblCantidadAleatoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadAleatoria.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantidadAleatoria.Location = new System.Drawing.Point(54, 303);
             this.lblCantidadAleatoria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCantidadAleatoria.Name = "lblCantidadAleatoria";
-            this.lblCantidadAleatoria.Size = new System.Drawing.Size(122, 50);
+            this.lblCantidadAleatoria.Size = new System.Drawing.Size(117, 50);
             this.lblCantidadAleatoria.TabIndex = 7;
             this.lblCantidadAleatoria.Text = "Cantidad a \r\ningresar:";
             // 
@@ -174,13 +184,15 @@
             // 
             // btnLimpiar
             // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.LavenderBlush;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiar.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.Location = new System.Drawing.Point(558, 466);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(259, 46);
             this.btnLimpiar.TabIndex = 9;
             this.btnLimpiar.Text = "LIMPIAR";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // E2
@@ -200,6 +212,7 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvNumbers);
             this.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.Maroon;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;

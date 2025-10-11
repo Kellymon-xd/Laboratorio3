@@ -33,57 +33,93 @@ namespace Laboratorio3
             dgvNumbers.ColumnHeadersVisible = false;    
         }
 
+       
+
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(txtNumero.Text, out int numeroAEliminar))
+            if (numeros == null || numeros.Count == 0)
             {
-                int eliminados = numeros.RemoveAll(x => x == numeroAEliminar);
+                MessageBox.Show("No hay números para eliminar.");
+                return;
+            }
 
-                if (eliminados > 0)
+            Dialogo dlgEliminar = new Dialogo();
+            dlgEliminar.Titulo = "Ingrese el número a eliminar:";
+            dlgEliminar.AplicarEstiloForm(this);
+
+            if (dlgEliminar.ShowDialog() == DialogResult.OK)
+            {
+                int numeroEliminar;
+                if (int.TryParse(dlgEliminar.ValorIngresado, out numeroEliminar)
+                    && numeros.Contains(numeroEliminar))
                 {
-                    MessageBox.Show($"Se eliminaron {eliminados} coincidencias del número {numeroAEliminar}.");
-                    txtNumero.Clear();
-                    txtNumero.Focus();
-                    ActualizarGrid();
+                    var resultado = MessageBox.Show(
+                        $"¿Está seguro que desea eliminar el número {numeroEliminar}?",
+                        "Confirmar eliminación",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (resultado == DialogResult.Yes)
+                    {
+                        int eliminados = numeros.RemoveAll(x => x == numeroEliminar);
+
+                        if (eliminados > 0)
+                        {
+                            MessageBox.Show($"Se eliminaron {eliminados} coincidencias del número {numeroEliminar}.");
+                            txtNumero.Clear();
+                            txtNumero.Focus();
+                            ActualizarGrid();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró el número en la lista.");
+                        }
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No se encontró el número en la lista.");
+                    MessageBox.Show("Número inválido o no encontrado.");
                 }
-
-            }
-            else
-            {
-                MessageBox.Show("Ingrese un número válido para eliminar.");
             }
         }
+
 
         private void ActualizarGrid()
         {
             dgvNumbers.Columns.Clear();
             dgvNumbers.Rows.Clear();
 
-            dgvNumbers.RowCount = 7;
-
+            int filas = 7;
             int totalNumbers = numeros.Count;
-            int columnsNeeded = (int)Math.Ceiling(totalNumbers / 7.0);
+            int columnas = (int)Math.Ceiling(totalNumbers / (double)filas);
+        
+            for (int c = 0; c < columnas; c++)
+                dgvNumbers.Columns.Add($"col{c}", "");
 
-            for (int col = 0; col < columnsNeeded; col++)
+            dgvNumbers.RowCount = filas;
+
+            int index = 0;
+            for (int col = 0; col < columnas; col++)
             {
-                dgvNumbers.Columns.Add($"Column{col}", $"Col {col + 1}");
-                dgvNumbers.Columns[col].Width = 80;
-            }
-
-            for (int i = 0; i < totalNumbers; i++)
-            {
-                int row = i % 7;
-                int col = i / 7;
-
-                if (col < dgvNumbers.ColumnCount && row < dgvNumbers.RowCount)
+                for (int row = 0; row < filas; row++)
                 {
-                    dgvNumbers[col, row].Value = numeros[i];
+                    if (index < totalNumbers)
+                    {
+                        dgvNumbers[col, row].Value = numeros[index++];
+                    }
+                    else
+                    {
+                        dgvNumbers[col, row].Value = null;
+                    }
                 }
             }
+
+            dgvNumbers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            int altoFila = dgvNumbers.ClientSize.Height / filas;
+            foreach (DataGridViewRow row in dgvNumbers.Rows)
+                row.Height = altoFila;
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
@@ -116,7 +152,7 @@ namespace Laboratorio3
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, ingrese un numero valido", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Por favor, ingrese un numero valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
