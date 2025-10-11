@@ -39,6 +39,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNumbers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -46,11 +47,11 @@
             // dgvNumbers
             // 
             this.dgvNumbers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNumbers.Location = new System.Drawing.Point(81, 97);
+            this.dgvNumbers.Location = new System.Drawing.Point(81, 75);
             this.dgvNumbers.Margin = new System.Windows.Forms.Padding(4);
             this.dgvNumbers.Name = "dgvNumbers";
             this.dgvNumbers.ReadOnly = true;
-            this.dgvNumbers.Size = new System.Drawing.Size(713, 181);
+            this.dgvNumbers.Size = new System.Drawing.Size(713, 203);
             this.dgvNumbers.TabIndex = 0;
             // 
             // label1
@@ -171,12 +172,24 @@
             this.txtCantidad.Size = new System.Drawing.Size(132, 43);
             this.txtCantidad.TabIndex = 8;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(558, 466);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(259, 46);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "LIMPIAR";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // E2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
             this.ClientSize = new System.Drawing.Size(844, 554);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnEliminar);
@@ -214,5 +227,6 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.Button button1;
     }
 }

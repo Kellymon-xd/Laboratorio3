@@ -15,41 +15,72 @@ namespace Laboratorio3
     {
         private List<int> numeros = new List<int>();
         private Random random = new Random();
-        private const int maximoFila = 7;
-
         public E2()
         {
             InitializeComponent();
+            ConfigurarDataGridView();
+        }
+
+        private void ConfigurarDataGridView()
+        {
+            dgvNumbers.AllowUserToAddRows = false;
+            dgvNumbers.AllowUserToDeleteRows = false;
+            dgvNumbers.AllowUserToResizeRows = false;
+            dgvNumbers.ReadOnly = true;
+            dgvNumbers.RowHeadersVisible = false;
+            dgvNumbers.ScrollBars = ScrollBars.Both;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (int.TryParse(txtNumero.Text, out int numeroAEliminar))
+            {
+                int eliminados = numeros.RemoveAll(x => x == numeroAEliminar);
 
+                if (eliminados > 0)
+                {
+                    MessageBox.Show($"Se eliminaron {eliminados} coincidencias del número {numeroAEliminar}.");
+                    txtNumero.Clear();
+                    txtNumero.Focus();
+                    ActualizarGrid();
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el número en la lista.");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un número válido para eliminar.");
+            }
         }
+        
 
         private void ActualizarGrid()
         {
-            int totalNumeros = numeros.Count;
-            int columnasNecesarias = (int)Math.Ceiling((double)totalNumeros / maximoFila);
-            for(int c = 0; c < columnasNecesarias; c++)
+            dgvNumbers.Columns.Clear();
+            dgvNumbers.Rows.Clear();
+
+            dgvNumbers.RowCount = 7;
+
+            int totalNumbers = numeros.Count;
+            int columnsNeeded = (int)Math.Ceiling(totalNumbers / 7.0);
+
+            for (int col = 0; col < columnsNeeded; col++)
             {
-                dgvNumbers.Columns.Add($"Columna{c}", $"Col {c + 1}");
+                dgvNumbers.Columns.Add($"Column{col}", $"Col {col + 1}");
+                dgvNumbers.Columns[col].Width = 80;
             }
-            for(int fila = 0; fila < maximoFila; fila++)
+
+            for (int i = 0; i < totalNumbers; i++)
             {
-                dgvNumbers.Rows.Add();
-            }
-            int index = 0;
-            for (int col = 0; col < columnasNecesarias; col++)
-            {
-                for (int fila = 0; fila < maximoFila; fila++)
+                int row = i % 7;
+                int col = i / 7;
+
+                if (col < dgvNumbers.ColumnCount && row < dgvNumbers.RowCount)
                 {
-                    if(index < totalNumeros)
-                    {
-                        dgvNumbers.Rows[fila].Cells[col].Value = numeros[index];
-                        index++;
-                    }
-                    else { break; }
+                    dgvNumbers[col, row].Value = numeros[i];
                 }
             }
         }
@@ -97,6 +128,8 @@ namespace Laboratorio3
                 txtNumero.BackColor = Color.White;
                 txtCantidad.ReadOnly = true;
                 txtCantidad.BackColor = Color.LightGray;
+                txtCantidad.Clear();
+
             }
         }
 
@@ -108,7 +141,18 @@ namespace Laboratorio3
                 txtNumero.BackColor = Color.LightGray;
                 txtCantidad.ReadOnly = false;
                 txtCantidad.BackColor = Color.White;
+                txtNumero.Clear();
+
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            numeros.Clear();
+            ActualizarGrid();
+            MessageBox.Show("Borrar lista de numeros!!", 
+                "Hermano! Has borrado la lista de numeros!!", MessageBoxButtons.OK, 
+                MessageBoxIcon.Information);
         }
     }
 }
