@@ -27,16 +27,44 @@ namespace Laboratorio3
         {
             String nombre;
             int monto;
-          
-            nombre =txtCliente.Text;
-            monto=Convert.ToInt32(txtMonto.Text);
-            CuentaBancaria cuenta = new CuentaBancaria(nombre,monto);
 
+            nombre = txtCliente.Text;
+            monto = Convert.ToInt32(txtMonto.Text);
+            CuentaBancaria cuenta = new CuentaBancaria(nombre, monto);
 
-            Transacciones transacciones = new Transacciones(cuenta);
-            transacciones.Show();
+            Cuenta_de_Ahorros obj=new Cuenta_de_Ahorros(cuenta);
+            obj.Show();
 
+        }
 
+        private void txtCliente_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCliente.Text))
+            {
+                e.Cancel = true;
+                txtCliente.Focus();
+                MessageBox.Show("El nombre del cliente es requerido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
+            {
+                e.Cancel = false;
+
+            }
+        }
+
+        private void txtMonto_Validating(object sender, CancelEventArgs e)
+        {
+            if (!int.TryParse(txtMonto.Text, out int monto) || monto <= 0)
+            {
+                e.Cancel = true;
+                MessageBox.Show("El monto inicial debe ser un número mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+            else
+            {
+                e.Cancel = false;
+            }
         }
     }
 }

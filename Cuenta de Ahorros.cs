@@ -13,7 +13,8 @@ namespace Laboratorio3
     public partial class Cuenta_de_Ahorros : Form
     {
         private CuentaBancaria cuenta;
-        private List<int> depositos = new List<int>();
+        private List<int> depositosRealizados = new List<int>();
+        private List<int> retirosRealizados = new List<int>();
 
         internal Cuenta_de_Ahorros(CuentaBancaria cuenta)
         {
@@ -31,68 +32,87 @@ namespace Laboratorio3
 
             ltbDepositos.SelectionMode = SelectionMode.One;
             ltbRetiros.SelectionMode = SelectionMode.One;
-           
+
             txtSaldo.Text = cuenta.getSaldoInicial().ToString();
             txtSaldoActual.Text = cuenta.getMonto().ToString();
         }
 
-        private void ltbDepositos_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+
+        }
+
+ 
+
+        private void ltbDepositos_DoubleClick(object sender, EventArgs e)
         {
             if (ltbDepositos.SelectedItem != null)
             {
-             
+                int depositoSeleccionado = (int)ltbDepositos.SelectedItem;
 
+             
+                if (depositosRealizados.Count > 0 && depositosRealizados.Last() == depositoSeleccionado)
+                {
+                    cuenta.retirar(depositoSeleccionado); 
+                    depositosRealizados.RemoveAt(depositosRealizados.Count - 1); 
+                    txtSaldoActual.Text = cuenta.getMonto().ToString();
+                    MessageBox.Show($"Depósito de {depositoSeleccionado} anulado.");
+                }
+                else
+                {
+                    MessageBox.Show("Solo se puede anular el último depósito realizado y que coincida con el monto seleccionado.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay depósitos seleccionados.");
             }
         }
 
-        private void txtSaldo_TextChanged(object sender, EventArgs e)
+
+        private void ltbRetiros_DoubleClick(object sender, EventArgs e)
         {
-           
+            if (ltbRetiros.SelectedItem != null)
+            {
+                int retiroSeleccionado = (int)ltbRetiros.SelectedItem;
+
+                
+                if (retirosRealizados.Count > 0 && retirosRealizados.Last() == retiroSeleccionado)
+                {
+                    cuenta.depositar(retiroSeleccionado); 
+                    retirosRealizados.RemoveAt(retirosRealizados.Count - 1); 
+                    txtSaldoActual.Text = cuenta.getMonto().ToString();
+                    MessageBox.Show($"Retiro de {retiroSeleccionado} anulado.");
+                }
+                else
+                {
+                    MessageBox.Show("Solo se puede anular el último retiro realizado y que coincida con el monto seleccionado.");
+                }
+            }
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-           Application.Restart();
 
+        private void rbDepositos_Click(object sender, EventArgs e)
+        {
+            if (ltbDepositos.SelectedItem != null)
+            {
+                int deposito = (int)ltbDepositos.SelectedItem;
+                MessageBox.Show(cuenta.depositar(deposito));
+                depositosRealizados.Add(deposito);
+                txtSaldoActual.Text = cuenta.getMonto().ToString();
+            }
         }
 
-        private void ltbRetiros_SelectedIndexChanged(object sender, EventArgs e)
+        private void rbRetiros_Click(object sender, EventArgs e)
         {
             if (ltbRetiros.SelectedItem != null)
             {
                 int retiro = (int)ltbRetiros.SelectedItem;
                 MessageBox.Show(cuenta.retirar(retiro));
-                txtSaldo.Text = cuenta.getSaldoInicial().ToString();
-                txtSaldoActual.Text = cuenta.getMonto().ToString();
-
-            }
-        }
-
-        private void txtSaldoActual_TextChanged(object sender, EventArgs e)
-        {
-         
-
-        }
-
-        private void ltbDepositos_DoubleClick(object sender, EventArgs e)
-        {
-            if (ltbDepositos.Items.Count>0)
-            {
-                int ultimoDeposito = depositos[depositos.Count - 1];
-                cuenta.retirar(ultimoDeposito);
-                depositos.RemoveAt(depositos.Count - 1);    
-                txtSaldo.Text = cuenta.getSaldoInicial().ToString();
+                retirosRealizados.Add(retiro);
                 txtSaldoActual.Text = cuenta.getMonto().ToString();
             }
-        }
-
-        private void btnConfirmar_Click(object sender, EventArgs e)
-        {
-            int deposito = (int)ltbDepositos.SelectedItem;
-            MessageBox.Show(cuenta.depositar(deposito));
-            depositos.Add(deposito);
-            txtSaldo.Text = cuenta.getSaldoInicial().ToString();
-            txtSaldoActual.Text = cuenta.getMonto().ToString();
         }
     }
 }

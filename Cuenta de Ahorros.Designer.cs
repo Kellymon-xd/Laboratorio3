@@ -39,14 +39,16 @@
             this.lblRetiros = new System.Windows.Forms.Label();
             this.lblDepositos = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnConfirmar = new System.Windows.Forms.Button();
+            this.rbDepositos = new System.Windows.Forms.RadioButton();
+            this.rbRetiros = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel1.Controls.Add(this.btnConfirmar);
+            this.panel1.Controls.Add(this.rbDepositos);
+            this.panel1.Controls.Add(this.rbRetiros);
             this.panel1.Controls.Add(this.lblSaldoActual);
             this.panel1.Controls.Add(this.txtSaldoActual);
             this.panel1.Controls.Add(this.ltbDepositos);
@@ -57,9 +59,9 @@
             this.panel1.Controls.Add(this.lblRetiros);
             this.panel1.Controls.Add(this.lblDepositos);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(143, 50);
+            this.panel1.Location = new System.Drawing.Point(138, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(533, 242);
+            this.panel1.Size = new System.Drawing.Size(533, 388);
             this.panel1.TabIndex = 0;
             // 
             // lblSaldoActual
@@ -79,7 +81,7 @@
             this.txtSaldoActual.ReadOnly = true;
             this.txtSaldoActual.Size = new System.Drawing.Size(100, 20);
             this.txtSaldoActual.TabIndex = 10;
-            this.txtSaldoActual.TextChanged += new System.EventHandler(this.txtSaldoActual_TextChanged);
+          
             // 
             // ltbDepositos
             // 
@@ -88,7 +90,7 @@
             this.ltbDepositos.Name = "ltbDepositos";
             this.ltbDepositos.Size = new System.Drawing.Size(120, 134);
             this.ltbDepositos.TabIndex = 9;
-            this.ltbDepositos.SelectedIndexChanged += new System.EventHandler(this.ltbDepositos_SelectedIndexChanged);
+            
             this.ltbDepositos.DoubleClick += new System.EventHandler(this.ltbDepositos_DoubleClick);
             // 
             // ltbRetiros
@@ -98,7 +100,8 @@
             this.ltbRetiros.Name = "ltbRetiros";
             this.ltbRetiros.Size = new System.Drawing.Size(120, 134);
             this.ltbRetiros.TabIndex = 8;
-            this.ltbRetiros.SelectedIndexChanged += new System.EventHandler(this.ltbRetiros_SelectedIndexChanged);
+           
+            this.ltbRetiros.DoubleClick += new System.EventHandler(this.ltbRetiros_DoubleClick);
             // 
             // txtSaldo
             // 
@@ -107,7 +110,7 @@
             this.txtSaldo.ReadOnly = true;
             this.txtSaldo.Size = new System.Drawing.Size(100, 20);
             this.txtSaldo.TabIndex = 7;
-            this.txtSaldo.TextChanged += new System.EventHandler(this.txtSaldo_TextChanged);
+       
             // 
             // btnNuevo
             // 
@@ -160,16 +163,33 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Cuenta de Ahorros";
             // 
-            // btnConfirmar
+            // rbDepositos
             // 
-            this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmar.Location = new System.Drawing.Point(388, 205);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(116, 23);
-            this.btnConfirmar.TabIndex = 12;
-            this.btnConfirmar.Text = "Confirmar";
-            this.btnConfirmar.UseVisualStyleBackColor = true;
-            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            this.rbDepositos.AutoSize = true;
+            this.rbDepositos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDepositos.Location = new System.Drawing.Point(213, 278);
+            this.rbDepositos.Name = "rbDepositos";
+            this.rbDepositos.Size = new System.Drawing.Size(96, 20);
+            this.rbDepositos.TabIndex = 15;
+            this.rbDepositos.TabStop = true;
+            this.rbDepositos.Text = "Depositos";
+            this.rbDepositos.UseVisualStyleBackColor = true;
+           
+            this.rbDepositos.Click += new System.EventHandler(this.rbDepositos_Click);
+            // 
+            // rbRetiros
+            // 
+            this.rbRetiros.AutoSize = true;
+            this.rbRetiros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbRetiros.Location = new System.Drawing.Point(32, 278);
+            this.rbRetiros.Name = "rbRetiros";
+            this.rbRetiros.Size = new System.Drawing.Size(75, 20);
+            this.rbRetiros.TabIndex = 14;
+            this.rbRetiros.TabStop = true;
+            this.rbRetiros.Text = "Retiros";
+            this.rbRetiros.UseVisualStyleBackColor = true;
+           
+            this.rbRetiros.Click += new System.EventHandler(this.rbRetiros_Click);
             // 
             // Cuenta_de_Ahorros
             // 
@@ -198,6 +218,7 @@
         private System.Windows.Forms.ListBox ltbRetiros;
         private System.Windows.Forms.Label lblSaldoActual;
         private System.Windows.Forms.TextBox txtSaldoActual;
-        private System.Windows.Forms.Button btnConfirmar;
+        private System.Windows.Forms.RadioButton rbDepositos;
+        private System.Windows.Forms.RadioButton rbRetiros;
     }
 }
