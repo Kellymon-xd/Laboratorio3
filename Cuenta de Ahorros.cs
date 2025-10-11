@@ -23,13 +23,6 @@ namespace Laboratorio3
             this.cuenta = cuenta;
 
 
-            ltbDepositos.Items.Add(50);
-            ltbDepositos.Items.Add(100);
-            ltbDepositos.Items.Add(200);
-            ltbRetiros.Items.Add(50);
-            ltbRetiros.Items.Add(100);
-            ltbRetiros.Items.Add(150);
-
             ltbDepositos.SelectionMode = SelectionMode.One;
             ltbRetiros.SelectionMode = SelectionMode.One;
 
@@ -49,24 +42,22 @@ namespace Laboratorio3
         {
             if (ltbDepositos.SelectedItem != null)
             {
-                int depositoSeleccionado = (int)ltbDepositos.SelectedItem;
+                int monto = (int)ltbDepositos.SelectedItem;
 
-             
-                if (depositosRealizados.Count > 0 && depositosRealizados.Last() == depositoSeleccionado)
+                DialogResult confirm = MessageBox.Show(
+                    $"¿Desea anular el depósito de {monto}?",
+                    "Confirmar anulación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirm == DialogResult.Yes)
                 {
-                    cuenta.retirar(depositoSeleccionado); 
-                    depositosRealizados.RemoveAt(depositosRealizados.Count - 1); 
+                    cuenta.retirar(monto);
+                    depositosRealizados.Remove(monto);
+                    ltbDepositos.Items.Remove(ltbDepositos.SelectedItem);
                     txtSaldoActual.Text = cuenta.getMonto().ToString();
-                    MessageBox.Show($"Depósito de {depositoSeleccionado} anulado.");
+                    MessageBox.Show($"Depósito de {monto} anulado correctamente.");
                 }
-                else
-                {
-                    MessageBox.Show("Solo se puede anular el último depósito realizado y que coincida con el monto seleccionado.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("No hay depósitos seleccionados.");
             }
         }
 
@@ -75,19 +66,21 @@ namespace Laboratorio3
         {
             if (ltbRetiros.SelectedItem != null)
             {
-                int retiroSeleccionado = (int)ltbRetiros.SelectedItem;
+                int monto = (int)ltbRetiros.SelectedItem;
 
-                
-                if (retirosRealizados.Count > 0 && retirosRealizados.Last() == retiroSeleccionado)
+                DialogResult confirm = MessageBox.Show(
+                    $"¿Desea anular el retiro de {monto}?",
+                    "Confirmar anulación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirm == DialogResult.Yes)
                 {
-                    cuenta.depositar(retiroSeleccionado); 
-                    retirosRealizados.RemoveAt(retirosRealizados.Count - 1); 
+                    cuenta.depositar(monto);
+                    retirosRealizados.Remove(monto);
+                    ltbRetiros.Items.Remove(ltbRetiros.SelectedItem);
                     txtSaldoActual.Text = cuenta.getMonto().ToString();
-                    MessageBox.Show($"Retiro de {retiroSeleccionado} anulado.");
-                }
-                else
-                {
-                    MessageBox.Show("Solo se puede anular el último retiro realizado y que coincida con el monto seleccionado.");
+                    MessageBox.Show($"Retiro de {monto} anulado correctamente.");
                 }
             }
         }
@@ -95,24 +88,44 @@ namespace Laboratorio3
 
         private void rbDepositos_Click(object sender, EventArgs e)
         {
-            if (ltbDepositos.SelectedItem != null)
+            if (int.TryParse(txtDepositar.Text, out int montoDeposito) && montoDeposito > 0)
             {
-                int deposito = (int)ltbDepositos.SelectedItem;
-                MessageBox.Show(cuenta.depositar(deposito));
-                depositosRealizados.Add(deposito);
+                MessageBox.Show(cuenta.depositar(montoDeposito));
+                depositosRealizados.Add(montoDeposito);
+                ltbDepositos.Items.Add(montoDeposito);
                 txtSaldoActual.Text = cuenta.getMonto().ToString();
+                txtDepositar.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un monto válido para depositar.");
             }
         }
 
         private void rbRetiros_Click(object sender, EventArgs e)
         {
-            if (ltbRetiros.SelectedItem != null)
+           if(int.TryParse(txtRetirar.Text, out int montoRetiro) && montoRetiro > 0)
             {
-                int retiro = (int)ltbRetiros.SelectedItem;
-                MessageBox.Show(cuenta.retirar(retiro));
-                retirosRealizados.Add(retiro);
-                txtSaldoActual.Text = cuenta.getMonto().ToString();
+                string resultadoRetiro = cuenta.retirar(montoRetiro);
+                if (resultadoRetiro.StartsWith("Retiro exitoso"))
+                {
+                    MessageBox.Show(resultadoRetiro);
+                    retirosRealizados.Add(montoRetiro);
+                    ltbRetiros.Items.Add(montoRetiro);
+                    txtSaldoActual.Text = cuenta.getMonto().ToString();
+                    txtRetirar.Clear();
+                }
+                else
+                {
+                    MessageBox.Show(resultadoRetiro); 
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un monto válido para retirar.");
             }
         }
+
+       
     }
 }
