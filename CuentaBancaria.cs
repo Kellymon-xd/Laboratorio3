@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Laboratorio3
 {
-    internal class CuentaBancaria
+    public class CuentaBancaria
     {
         private string nombre;
         private int monto;
@@ -15,7 +15,7 @@ namespace Laboratorio3
         private int retiro; 
      
 
-       public CuentaBancaria(string nombre, int monto)
+       internal CuentaBancaria(string nombre, int monto)
         {
             this.nombre = nombre;
             this.monto = monto;

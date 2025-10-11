@@ -13,27 +13,65 @@ namespace Laboratorio3
 {
     public partial class E1 : Form
     {
+        private CuentaBancaria cuenta;
+        private List<int> depositosRealizados = new List<int>();
+        private List<int> retirosRealizados = new List<int>();
+        public E1(CuentaBancaria cuenta)
+        {
+            InitializeComponent();
+            this.cuenta = cuenta;
+
+
+            ltbDepositos.SelectionMode = SelectionMode.One;
+            ltbRetiros.SelectionMode = SelectionMode.One;
+
+            txtSaldo.Text = cuenta.getSaldoInicial().ToString();
+            txtSaldoActual.Text = cuenta.getMonto().ToString();
+        }
+
         public E1()
         {
             InitializeComponent();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+   
 
         private void btnAbrirCuenta_Click(object sender, EventArgs e)
         {
-            String nombre;
-            int monto;
+            string nombre = txtCliente.Text.Trim();
+            string textoMonto = txtMonto.Text.Trim();
 
-            nombre = txtCliente.Text;
-            monto = Convert.ToInt32(txtMonto.Text);
-            CuentaBancaria cuenta = new CuentaBancaria(nombre, monto);
 
-            Cuenta_de_Ahorros obj=new Cuenta_de_Ahorros(cuenta);
-            obj.Show();
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                MessageBox.Show("Debe ingresar el nombre del cliente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCliente.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(textoMonto))
+            {
+                MessageBox.Show("Debe ingresar el monto inicial.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMonto.Focus();
+                return;
+            }
+
+           
+            if (!int.TryParse(textoMonto, out int monto) || monto <= 0)
+            {
+                MessageBox.Show("Ingrese un monto válido mayor que cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMonto.Focus();
+                return;
+            }
+
+            this.cuenta = new CuentaBancaria(nombre, monto);
+
+            txtSaldo.Text = cuenta.getSaldoInicial().ToString();
+            txtSaldoActual.Text = cuenta.getMonto().ToString();
+
+            MessageBox.Show($"Cuenta creada para {nombre} con un saldo inicial de {monto}.",
+                            "Cuenta abierta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
         }
 
@@ -66,5 +104,99 @@ namespace Laboratorio3
                 e.Cancel = false;
             }
         }
+
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+           
+            if (cuenta == null)
+            {
+                MessageBox.Show("Primero debe abrir una cuenta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+          
+            if (!int.TryParse(txtMontoOperacion.Text, out int montoOperacion) || montoOperacion <= 0)
+            {
+                MessageBox.Show("Ingrese un monto válido mayor que 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+          
+            if (rbDepositos.Checked)
+            {
+                string resultado = cuenta.depositar(montoOperacion);
+                depositosRealizados.Add(montoOperacion);
+                ltbDepositos.Items.Add(montoOperacion);
+                txtSaldoActual.Text = cuenta.getMonto().ToString();
+                txtMontoOperacion.Clear();
+                MessageBox.Show(resultado, "Depósito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (rbRetiros.Checked)
+            {
+                string resultado = cuenta.retirar(montoOperacion);
+                if (resultado.StartsWith("Retiro exitoso"))
+                {
+                    retirosRealizados.Add(montoOperacion);
+                    ltbRetiros.Items.Add(montoOperacion);
+                    txtSaldoActual.Text = cuenta.getMonto().ToString();
+                    txtMontoOperacion.Clear();
+                }
+                MessageBox.Show(resultado, "Retiro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una operación (Depósito o Retiro).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void ltbDepositos_DoubleClick(object sender, EventArgs e)
+        {
+            if (ltbDepositos.SelectedItem != null)
+            {
+                int monto = (int)ltbDepositos.SelectedItem;
+
+                DialogResult confirm = MessageBox.Show(
+                    $"¿Desea anular el depósito de {monto}?",
+                    "Confirmar anulación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirm == DialogResult.Yes)
+                {
+                    cuenta.retirar(monto);
+                    depositosRealizados.Remove(monto);
+                    ltbDepositos.Items.Remove(ltbDepositos.SelectedItem);
+                    txtSaldoActual.Text = cuenta.getMonto().ToString();
+                    MessageBox.Show($"Depósito de {monto} anulado correctamente.");
+                }
+            }
+        }
+
+        private void ltbRetiros_DoubleClick(object sender, EventArgs e)
+        {
+            if (ltbRetiros.SelectedItem != null)
+            {
+                int monto = (int)ltbRetiros.SelectedItem;
+
+                DialogResult confirm = MessageBox.Show(
+                    $"¿Desea anular el retiro de {monto}?",
+                    "Confirmar anulación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirm == DialogResult.Yes)
+                {
+                    cuenta.depositar(monto);
+                    retirosRealizados.Remove(monto);
+                    ltbRetiros.Items.Remove(ltbRetiros.SelectedItem);
+                    txtSaldoActual.Text = cuenta.getMonto().ToString();
+                    MessageBox.Show($"Retiro de {monto} anulado correctamente.");
+                }
+            }
+        }
+
+    
     }
+
 }
