@@ -29,6 +29,8 @@ namespace Laboratorio3
             dgvNumbers.ReadOnly = true;
             dgvNumbers.RowHeadersVisible = false;
             dgvNumbers.ScrollBars = ScrollBars.Both;
+            dgvNumbers.RowHeadersVisible=false;
+            dgvNumbers.ColumnHeadersVisible = false;    
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -88,12 +90,12 @@ namespace Laboratorio3
         {
             if (rdbAleatorio.Checked)
             {
-                if(int.TryParse(txtCantidad.Text,out int cantidad) && cantidad > 0)
+                if (int.TryParse(txtCantidad.Text, out int cantidad) && cantidad > 0)
                 {
                     numeros.Clear();
-                    for (int i =0; i <cantidad; i++)
+                    for (int i = 0; i < cantidad; i++)
                     {
-                        numeros.Add(random.Next(1,101));
+                        numeros.Add(random.Next(1, 101));
                     }
                     ActualizarGrid();
                     txtCantidad.Clear();
@@ -105,7 +107,7 @@ namespace Laboratorio3
             }
             else
             {
-                if(int.TryParse(txtNumero.Text, out int numero))
+                if (int.TryParse(txtNumero.Text, out int numero))
                 {
                     numeros.Add(numero);
                     txtNumero.Clear();
@@ -145,13 +147,15 @@ namespace Laboratorio3
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            numeros.Clear();
-            ActualizarGrid();
-            MessageBox.Show("Borrar lista de numeros!!", 
-                "Hermano! Has borrado la lista de numeros!!", MessageBoxButtons.OK, 
-                MessageBoxIcon.Information);
+            {
+                numeros.Clear();
+                ActualizarGrid();
+                MessageBox.Show("Borrar lista de numeros!!",
+                    "Hermano! Has borrado la lista de numeros!!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
         }
     }
 }
