@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace Laboratorio3
 {
-    public partial class E3 : Form
+    public partial class frmE3 : Form
     {
         private float[] ventas;
         int cantVentas;
-        public E3()
+        public frmE3()
         {
             InitializeComponent();
         }
@@ -80,28 +80,28 @@ namespace Laboratorio3
             int columnas = 5;
 
 
-            dataGridView2.Columns.Clear();
+            dgvVentas.Columns.Clear();
             for (int i = 0; i < columnas; i++)
             {
-                dataGridView2.Columns.Add("", "");
+                dgvVentas.Columns.Add("", "");
             }
             
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.RowHeadersVisible = false;
-            dataGridView2.ColumnHeadersVisible = false;
-            dataGridView2.Rows.Clear();
+            dgvVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvVentas.RowHeadersVisible = false;
+            dgvVentas.ColumnHeadersVisible = false;
+            dgvVentas.Rows.Clear();
 
 
-            dataGridView1.Columns.Clear();
+            dgvVentasF.Columns.Clear();
             for (int i = 0; i < columnas; i++)
             {
-                dataGridView1.Columns.Add("", "");
+                dgvVentasF.Columns.Add("", "");
             }
             
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.ColumnHeadersVisible = false;
-            dataGridView1.Rows.Clear();
+            dgvVentasF.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvVentasF.RowHeadersVisible = false;
+            dgvVentasF.ColumnHeadersVisible = false;
+            dgvVentasF.Rows.Clear();
 
             for (int i = 0; i < ventas.Length; i += columnas)
             {
@@ -111,7 +111,7 @@ namespace Laboratorio3
                     if (i + j < ventas.Length)
                         fila[j] = ventas[i + j];
                 }
-                dataGridView2.Rows.Add(fila);
+                dgvVentas.Rows.Add(fila);
             }
 
 
@@ -124,7 +124,7 @@ namespace Laboratorio3
                     if (i + j < ventasFiltradas.Length)
                         fila[j] = ventasFiltradas[i + j];
                 }
-                dataGridView1.Rows.Add(fila);
+                dgvVentasF.Rows.Add(fila);
             }
 
             txtVentasRealizadas.Text = "" + cantVentas;

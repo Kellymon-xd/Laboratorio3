@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace Laboratorio3
 {
-    public partial class E4 : Form
+    public partial class frmE4 : Form
     {
         ValidarCampos validadorCampos = new ValidarCampos();
 
-        public E4()
+        public frmE4()
         {
             InitializeComponent();
             pnlReq.Visible = false;

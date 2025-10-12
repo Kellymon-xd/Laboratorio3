@@ -48,37 +48,37 @@
   <ItemGroup>
     <Compile Include="AgregarNumero.cs" />
     <Compile Include="CuentaBancaria.cs" />
-    <Compile Include="E1.cs">
+    <Compile Include="frmE1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="E1.Designer.cs">
-      <DependentUpon>E1.cs</DependentUpon>
+    <Compile Include="frmE1.Designer.cs">
+      <DependentUpon>frmE1.cs</DependentUpon>
     </Compile>
-    <Compile Include="E2.cs">
+    <Compile Include="frmE2.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="E2.Designer.cs">
-      <DependentUpon>E2.cs</DependentUpon>
+    <Compile Include="frmE2.Designer.cs">
+      <DependentUpon>frmE2.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="E3.cs">
+    <Compile Include="frmE3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="E3.Designer.cs">
-      <DependentUpon>E3.cs</DependentUpon>
+    <Compile Include="frmE3.Designer.cs">
+      <DependentUpon>frmE3.cs</DependentUpon>
     </Compile>
-    <Compile Include="E32.cs">
+    <Compile Include="frmE32.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="E32.Designer.cs">
-      <DependentUpon>E32.cs</DependentUpon>
+    <Compile Include="frmE32.Designer.cs">
+      <DependentUpon>frmE32.cs</DependentUpon>
     </Compile>
-    <Compile Include="E4.cs">
+    <Compile Include="frmE4.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="E4.Designer.cs">
-      <DependentUpon>E4.cs</DependentUpon>
+    <Compile Include="frmE4.Designer.cs">
+      <DependentUpon>frmE4.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -89,21 +89,21 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Verificar.cs" />
-    <EmbeddedResource Include="E1.resx">
-      <DependentUpon>E1.cs</DependentUpon>
+    <EmbeddedResource Include="frmE1.resx">
+      <DependentUpon>frmE1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="E2.resx">
-      <DependentUpon>E2.cs</DependentUpon>
+    <EmbeddedResource Include="frmE2.resx">
+      <DependentUpon>frmE2.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="E3.resx">
-      <DependentUpon>E3.cs</DependentUpon>
+    <EmbeddedResource Include="frmE3.resx">
+      <DependentUpon>frmE3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="E32.resx">
-      <DependentUpon>E32.cs</DependentUpon>
+    <EmbeddedResource Include="frmE32.resx">
+      <DependentUpon>frmE32.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="E4.resx">
-      <DependentUpon>E4.cs</DependentUpon>
+    <EmbeddedResource Include="frmE4.resx">
+      <DependentUpon>frmE4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>

@@ -22,22 +22,22 @@ namespace Laboratorio3
 
         private void enunciado1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new E1());
+            AbrirFormulario(new frmE1());
         }
 
         private void enunciado2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new E2());
+            AbrirFormulario(new frmE2());
         }
 
         private void enunciado3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new E3());
+            AbrirFormulario(new frmE3());
         }
 
         private void enunciado4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new E4());
+            AbrirFormulario(new frmE4());
         }
 
         private void AbrirFormulario(Form formHijo)

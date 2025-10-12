@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Laboratorio3
 {
-    public partial class E2 : Form
+    public partial class frmE2 : Form
     {
         private List<int> numeros = new List<int>();
         private Random random = new Random();
-        public E2()
+        public frmE2()
         {
             InitializeComponent();
             ConfigurarDataGridView();
@@ -92,32 +92,36 @@ namespace Laboratorio3
             dgvNumbers.Columns.Clear();
             dgvNumbers.Rows.Clear();
 
+            dgvNumbers.ColumnHeadersVisible = false;
+            dgvNumbers.RowHeadersVisible = false;
+
             int totalNumbers = numeros.Count;
+            int filas = 7;
 
-            int columnsNeeded = Math.Min(totalNumbers, 15);
-            if (columnsNeeded == 0) columnsNeeded = 1;
+            int columnas = (int)Math.Ceiling(totalNumbers / (double)filas);
+            if (columnas == 0) columnas = 1;
 
-            int rowsNeeded = (int)Math.Ceiling(totalNumbers / (double)columnsNeeded);
+            for (int c = 0; c < columnas; c++)
+                dgvNumbers.Columns.Add($"col{c}", "");
 
-            for (int col = 0; col < columnsNeeded; col++)
-            {
-                dgvNumbers.Columns.Add($"Column{col}", $"Col {col + 1}");
-                dgvNumbers.Columns[col].Width = 80;
-            }
-
-            dgvNumbers.RowCount = rowsNeeded;
+            dgvNumbers.RowCount = filas;
 
             for (int i = 0; i < totalNumbers; i++)
             {
-                int col = i / rowsNeeded;
-                int row = i % rowsNeeded;
+                int row = i / columnas;
+                int col = i % columnas; 
 
-                if (col < dgvNumbers.ColumnCount && row < dgvNumbers.RowCount)
-                {
+                if (row < filas && col < columnas)
                     dgvNumbers[col, row].Value = numeros[i];
-                }
             }
+
+            dgvNumbers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            int altoFila = dgvNumbers.ClientSize.Height / filas;
+            foreach (DataGridViewRow row in dgvNumbers.Rows)
+                row.Height = altoFila;
         }
+
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {

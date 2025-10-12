@@ -10,9 +10,7 @@ namespace Laboratorio3
     {
         private string nombre;
         private int monto;
-        private int deposito;
         private int saldoInicial;
-        private int retiro; 
      
 
        internal CuentaBancaria(string nombre, int monto)

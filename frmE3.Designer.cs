@@ -1,6 +1,6 @@
 ﻿namespace Laboratorio3
 {
-    partial class E3
+    partial class frmE3
     {
         /// <summary>
         /// Required designer variable.
@@ -31,21 +31,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(E3));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmE3));
+            this.dgvVentasF = new System.Windows.Forms.DataGridView();
+            this.dgvVentas = new System.Windows.Forms.DataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnEmpezar = new System.Windows.Forms.Button();
             this.txtVentasRealizadas = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.lblCentasF = new System.Windows.Forms.Label();
+            this.lblVentas = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVentasF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvVentasF
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dgvVentasF.BackgroundColor = System.Drawing.Color.FloralWhite;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Cornsilk;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -53,8 +53,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Khaki;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.DarkGoldenrod;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVentasF.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvVentasF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -62,17 +62,17 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gold;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.SaddleBrown;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(41, 120);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(364, 319);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvVentasF.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvVentasF.Location = new System.Drawing.Point(41, 120);
+            this.dgvVentasF.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvVentasF.Name = "dgvVentasF";
+            this.dgvVentasF.Size = new System.Drawing.Size(364, 319);
+            this.dgvVentasF.TabIndex = 0;
             // 
-            // dataGridView2
+            // dgvVentas
             // 
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FloralWhite;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVentas.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -80,12 +80,12 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gold;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.SaddleBrown;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView2.Location = new System.Drawing.Point(428, 120);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(364, 319);
-            this.dataGridView2.TabIndex = 1;
+            this.dgvVentas.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvVentas.Location = new System.Drawing.Point(428, 120);
+            this.dgvVentas.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvVentas.Name = "dgvVentas";
+            this.dgvVentas.Size = new System.Drawing.Size(364, 319);
+            this.dgvVentas.TabIndex = 1;
             // 
             // lblTitle
             // 
@@ -126,39 +126,39 @@
             this.txtVentasRealizadas.Size = new System.Drawing.Size(133, 25);
             this.txtVentasRealizadas.TabIndex = 4;
             // 
-            // label1
+            // lblCentasF
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(142, 100);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 16);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Ventas entre $75-$215";
+            this.lblCentasF.AutoSize = true;
+            this.lblCentasF.Location = new System.Drawing.Point(142, 100);
+            this.lblCentasF.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCentasF.Name = "lblCentasF";
+            this.lblCentasF.Size = new System.Drawing.Size(152, 16);
+            this.lblCentasF.TabIndex = 5;
+            this.lblCentasF.Text = "Ventas entre $75-$215";
             // 
-            // label2
+            // lblVentas
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(584, 100);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 16);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Ventas";
+            this.lblVentas.AutoSize = true;
+            this.lblVentas.Location = new System.Drawing.Point(584, 100);
+            this.lblVentas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVentas.Name = "lblVentas";
+            this.lblVentas.Size = new System.Drawing.Size(50, 16);
+            this.lblVentas.TabIndex = 6;
+            this.lblVentas.Text = "Ventas";
             // 
-            // E3
+            // frmE3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(843, 469);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblVentas);
+            this.Controls.Add(this.lblCentasF);
             this.Controls.Add(this.txtVentasRealizadas);
             this.Controls.Add(this.btnEmpezar);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvVentas);
+            this.Controls.Add(this.dgvVentasF);
             this.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.DarkGoldenrod;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -166,10 +166,10 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "E3";
+            this.Name = "frmE3";
             this.Text = "Ventas realizadas en el año";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVentasF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,12 +177,12 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvVentasF;
+        private System.Windows.Forms.DataGridView dgvVentas;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnEmpezar;
         private System.Windows.Forms.TextBox txtVentasRealizadas;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCentasF;
+        private System.Windows.Forms.Label lblVentas;
     }
 }

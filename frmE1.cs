@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace Laboratorio3
 {
-    public partial class E1 : Form
+    public partial class frmE1 : Form
     {
         private CuentaBancaria cuenta;
         private List<int> depositosRealizados = new List<int>();
         private List<int> retirosRealizados = new List<int>();
-        public E1()
+        public frmE1()
         {
             InitializeComponent();
         }
