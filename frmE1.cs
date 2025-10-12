@@ -14,8 +14,6 @@ namespace Laboratorio3
     public partial class frmE1 : Form
     {
         private CuentaBancaria cuenta;
-        private List<int> depositosRealizados = new List<int>();
-        private List<int> retirosRealizados = new List<int>();
         public frmE1()
         {
             InitializeComponent();
@@ -41,7 +39,7 @@ namespace Laboratorio3
             }
 
            
-            if (!int.TryParse(textoMonto, out int monto) || monto <= 0)
+            if (!float.TryParse(textoMonto, out float monto) || monto <= 0)
             {
                 MessageBox.Show("Ingrese un monto válido mayor que cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMonto.Focus();
@@ -75,7 +73,7 @@ namespace Laboratorio3
         }
         private void txtMonto_Validating(object sender, CancelEventArgs e)
         {
-            if (!int.TryParse(txtMonto.Text, out int monto) || monto <= 0)
+            if (!float.TryParse(txtMonto.Text, out float monto) || monto <= 0)
             {
                 e.Cancel = true;
                 MessageBox.Show("El monto inicial debe ser un número mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -114,27 +112,34 @@ namespace Laboratorio3
 
             if (dlgMonto.ShowDialog() == DialogResult.OK)
             {
-                if (int.TryParse(dlgMonto.ValorIngresado, out int montoOperacion) || montoOperacion > 0)
+                if (float.TryParse(dlgMonto.ValorIngresado, out float montoOperacion) || montoOperacion > 0)
                 {
-                    if (rbDepositos.Checked)
+                    float multiplicado = montoOperacion * 100;
+                    if (Math.Floor(multiplicado) == multiplicado)
                     {
-                        string resultado = cuenta.depositar(montoOperacion);
-                        depositosRealizados.Add(montoOperacion);
-                        ltbDepositos.Items.Add(montoOperacion);
-                        txtSaldoActual.Text = cuenta.getMonto().ToString();
-                        MessageBox.Show(resultado, "Depósito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (rbRetiros.Checked)
-                    {
-                        string resultado = cuenta.retirar(montoOperacion);
-                        if (resultado.StartsWith("Retiro exitoso"))
+                        if (rbDepositos.Checked)
                         {
-                            retirosRealizados.Add(montoOperacion);
-                            ltbRetiros.Items.Add(montoOperacion);
+                            string resultado = cuenta.depositar(montoOperacion);
+                            ltbDepositos.Items.Add(montoOperacion);
                             txtSaldoActual.Text = cuenta.getMonto().ToString();
+                            MessageBox.Show(resultado, "Depósito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                        MessageBox.Show(resultado, "Retiro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else if (rbRetiros.Checked)
+                        {
+                            string resultado = cuenta.retirar(montoOperacion);
+                            if (resultado.StartsWith("Retiro exitoso"))
+                            {
+                                ltbRetiros.Items.Add(montoOperacion);
+                                txtSaldoActual.Text = cuenta.getMonto().ToString();
+                            }
+                            MessageBox.Show(resultado, "Retiro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
+                    else
+                    {
+                        MessageBox.Show("Número inválido: máximo 2 decimales.");
+                        return;
+                    } 
                 }
                 else
                 {
@@ -152,7 +157,7 @@ namespace Laboratorio3
         {
             if (ltbDepositos.SelectedItem != null)
             {
-                int monto = (int)ltbDepositos.SelectedItem;
+                float monto = (float)ltbDepositos.SelectedItem;
 
                 DialogResult confirm = MessageBox.Show(
                     $"¿Desea anular el depósito de {monto}?",
@@ -163,7 +168,7 @@ namespace Laboratorio3
                 if (confirm == DialogResult.Yes)
                 {
                     cuenta.retirar(monto);
-                    depositosRealizados.Remove(monto);
+                    cuenta.getDepositosRealizados().Remove(monto);
                     ltbDepositos.Items.Remove(ltbDepositos.SelectedItem);
                     txtSaldoActual.Text = cuenta.getMonto().ToString();
                     MessageBox.Show($"Depósito de {monto} anulado correctamente.");
@@ -174,7 +179,7 @@ namespace Laboratorio3
         {
             if (ltbRetiros.SelectedItem != null)
             {
-                int monto = (int)ltbRetiros.SelectedItem;
+                float monto = (float)ltbRetiros.SelectedItem;
 
                 DialogResult confirm = MessageBox.Show(
                     $"¿Desea anular el retiro de {monto}?",
@@ -185,7 +190,7 @@ namespace Laboratorio3
                 if (confirm == DialogResult.Yes)
                 {
                     cuenta.depositar(monto);
-                    retirosRealizados.Remove(monto);
+                    cuenta.getRetirosRealizados().Remove(monto);
                     ltbRetiros.Items.Remove(ltbRetiros.SelectedItem);
                     txtSaldoActual.Text = cuenta.getMonto().ToString();
                     MessageBox.Show($"Retiro de {monto} anulado correctamente.");

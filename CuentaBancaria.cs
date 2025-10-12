@@ -9,30 +9,41 @@ namespace Laboratorio3
     public class CuentaBancaria
     {
         private string nombre;
-        private int monto;
-        private int saldoInicial;
-     
+        private float monto;
+        private float saldoInicial;
+        private List<float> depositosRealizados;
+        private List<float> retirosRealizados;
 
-       internal CuentaBancaria(string nombre, int monto)
+
+        public CuentaBancaria(string nombre, float monto)
         {
             this.nombre = nombre;
             this.monto = monto;
             this.saldoInicial = monto;
-
-
+            depositosRealizados = new List<float>();
+            retirosRealizados = new List<float>();
         }
 
-        public int getMonto()
+        public float getMonto()
         {
             return monto;
         }
 
-        public int getSaldoInicial()
+        public float getSaldoInicial()
         {
             return saldoInicial;
         }
 
-        public String depositar(int deposito)
+        public List<float> getRetirosRealizados() { 
+            return retirosRealizados;
+        }
+
+        public List<float> getDepositosRealizados()
+        {
+            return depositosRealizados;
+        }
+
+        public String depositar(float deposito)
         {
             if (deposito <= 0)
             {
@@ -40,13 +51,13 @@ namespace Laboratorio3
             }
             else {
                 monto+= deposito;
+                depositosRealizados.Add(deposito);
                 return $"Deposito exitoso, su nuevo saldo es: {monto}";
             }
             
         }
-     
 
-        public String retirar(int retiro)
+        public String retirar(float retiro)
         {
             if(retiro>monto)
             {
@@ -55,6 +66,7 @@ namespace Laboratorio3
             else
             {
                 monto -= retiro;
+                retirosRealizados.Add(retiro);
                 return $"Retiro exitoso, su nuevo saldo es: {monto}";
             }
         }
