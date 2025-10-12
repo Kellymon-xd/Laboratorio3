@@ -16,26 +16,10 @@ namespace Laboratorio3
         private CuentaBancaria cuenta;
         private List<int> depositosRealizados = new List<int>();
         private List<int> retirosRealizados = new List<int>();
-        public E1(CuentaBancaria cuenta)
-        {
-            InitializeComponent();
-            this.cuenta = cuenta;
-
-
-            ltbDepositos.SelectionMode = SelectionMode.One;
-            ltbRetiros.SelectionMode = SelectionMode.One;
-
-            txtSaldo.Text = cuenta.getSaldoInicial().ToString();
-            txtSaldoActual.Text = cuenta.getMonto().ToString();
-        }
-
         public E1()
         {
             InitializeComponent();
         }
-
-   
-
         private void btnAbrirCuenta_Click(object sender, EventArgs e)
         {
             string nombre = txtCliente.Text.Trim();
@@ -89,7 +73,6 @@ namespace Laboratorio3
 
             }
         }
-
         private void txtMonto_Validating(object sender, CancelEventArgs e)
         {
             if (!int.TryParse(txtMonto.Text, out int monto) || monto <= 0)
@@ -103,8 +86,6 @@ namespace Laboratorio3
                 e.Cancel = false;
             }
         }
-
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
 
@@ -167,8 +148,6 @@ namespace Laboratorio3
 
             }
         }
- 
-
         private void ltbDepositos_DoubleClick(object sender, EventArgs e)
         {
             if (ltbDepositos.SelectedItem != null)
@@ -191,7 +170,6 @@ namespace Laboratorio3
                 }
             }
         }
-
         private void ltbRetiros_DoubleClick(object sender, EventArgs e)
         {
             if (ltbRetiros.SelectedItem != null)
@@ -214,8 +192,5 @@ namespace Laboratorio3
                 }
             }
         }
-
-    
     }
-
 }
