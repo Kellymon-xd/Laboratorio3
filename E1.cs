@@ -108,47 +108,67 @@ namespace Laboratorio3
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-           
+
             if (cuenta == null)
             {
                 MessageBox.Show("Primero debe abrir una cuenta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-          
-            if (!int.TryParse(txtMontoOperacion.Text, out int montoOperacion) || montoOperacion <= 0)
-            {
-                MessageBox.Show("Ingrese un monto válido mayor que 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-          
+            Dialogo dlgMonto = new Dialogo();
+            dlgMonto.AplicarEstiloForm(this);
+            dlgMonto.AplicarEstiloBoton(dlgMonto, Color.White);
             if (rbDepositos.Checked)
             {
-                string resultado = cuenta.depositar(montoOperacion);
-                depositosRealizados.Add(montoOperacion);
-                ltbDepositos.Items.Add(montoOperacion);
-                txtSaldoActual.Text = cuenta.getMonto().ToString();
-                txtMontoOperacion.Clear();
-                MessageBox.Show(resultado, "Depósito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dlgMonto.Titulo = $"Ingrese monto a depositar:";
             }
             else if (rbRetiros.Checked)
             {
-                string resultado = cuenta.retirar(montoOperacion);
-                if (resultado.StartsWith("Retiro exitoso"))
+                dlgMonto.Titulo = $"Ingrese monto a retirar:";
+            }
+            else {
+                MessageBox.Show("Seleccione una operación (Depósito o Retiro).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            if (dlgMonto.ShowDialog() == DialogResult.OK)
+            {
+                if (int.TryParse(dlgMonto.ValorIngresado, out int montoOperacion) || montoOperacion > 0)
                 {
-                    retirosRealizados.Add(montoOperacion);
-                    ltbRetiros.Items.Add(montoOperacion);
-                    txtSaldoActual.Text = cuenta.getMonto().ToString();
-                    txtMontoOperacion.Clear();
+                    if (rbDepositos.Checked)
+                    {
+                        string resultado = cuenta.depositar(montoOperacion);
+                        depositosRealizados.Add(montoOperacion);
+                        ltbDepositos.Items.Add(montoOperacion);
+                        txtSaldoActual.Text = cuenta.getMonto().ToString();
+                        MessageBox.Show(resultado, "Depósito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (rbRetiros.Checked)
+                    {
+                        string resultado = cuenta.retirar(montoOperacion);
+                        if (resultado.StartsWith("Retiro exitoso"))
+                        {
+                            retirosRealizados.Add(montoOperacion);
+                            ltbRetiros.Items.Add(montoOperacion);
+                            txtSaldoActual.Text = cuenta.getMonto().ToString();
+                        }
+                        MessageBox.Show(resultado, "Retiro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                MessageBox.Show(resultado, "Retiro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                {
+                    MessageBox.Show("Ingrese un monto válido mayor que 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
             else
             {
-                MessageBox.Show("Seleccione una operación (Depósito o Retiro).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Entrada cancelada.");
+
             }
         }
+ 
 
         private void ltbDepositos_DoubleClick(object sender, EventArgs e)
         {
