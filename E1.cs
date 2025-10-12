@@ -71,8 +71,7 @@ namespace Laboratorio3
 
             MessageBox.Show($"Cuenta creada para {nombre} con un saldo inicial de {monto}.",
                             "Cuenta abierta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
+            btnAbrirCuenta.Enabled = false;
         }
 
         private void txtCliente_Validating(object sender, CancelEventArgs e)

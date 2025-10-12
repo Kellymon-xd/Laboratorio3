@@ -55,6 +55,7 @@
             // 
             // txtMonto
             // 
+            this.txtMonto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMonto.Location = new System.Drawing.Point(201, 144);
             this.txtMonto.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtMonto.Name = "txtMonto";
@@ -64,6 +65,7 @@
             // 
             // txtCliente
             // 
+            this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCliente.Location = new System.Drawing.Point(201, 53);
             this.txtCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCliente.Name = "txtCliente";
@@ -73,6 +75,8 @@
             // 
             // btnAbrirCuenta
             // 
+            this.btnAbrirCuenta.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnAbrirCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAbrirCuenta.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAbrirCuenta.Location = new System.Drawing.Point(456, 47);
             this.btnAbrirCuenta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -80,7 +84,7 @@
             this.btnAbrirCuenta.Size = new System.Drawing.Size(137, 33);
             this.btnAbrirCuenta.TabIndex = 2;
             this.btnAbrirCuenta.Text = "Abrir Cuenta";
-            this.btnAbrirCuenta.UseVisualStyleBackColor = true;
+            this.btnAbrirCuenta.UseVisualStyleBackColor = false;
             this.btnAbrirCuenta.Click += new System.EventHandler(this.btnAbrirCuenta_Click);
             // 
             // lblMontoInicial
@@ -107,13 +111,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.lblCliente);
             this.groupBox1.Controls.Add(this.txtMonto);
             this.groupBox1.Controls.Add(this.lblMontoInicial);
             this.groupBox1.Controls.Add(this.txtCliente);
             this.groupBox1.Controls.Add(this.btnAbrirCuenta);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(15, 22);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
@@ -162,6 +166,8 @@
             // 
             // txtSaldoActual
             // 
+            this.txtSaldoActual.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSaldoActual.Enabled = false;
             this.txtSaldoActual.Location = new System.Drawing.Point(276, 100);
             this.txtSaldoActual.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSaldoActual.Name = "txtSaldoActual";
@@ -195,6 +201,8 @@
             // 
             // txtSaldo
             // 
+            this.txtSaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSaldo.Enabled = false;
             this.txtSaldo.Location = new System.Drawing.Point(276, 54);
             this.txtSaldo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSaldo.Name = "txtSaldo";
@@ -204,6 +212,8 @@
             // 
             // btnNuevo
             // 
+            this.btnNuevo.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.Location = new System.Drawing.Point(487, 75);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -211,7 +221,7 @@
             this.btnNuevo.Size = new System.Drawing.Size(155, 27);
             this.btnNuevo.TabIndex = 6;
             this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // lblSaldo
@@ -249,10 +259,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.rbRetiros);
             this.groupBox2.Controls.Add(this.rbDepositos);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(15, 267);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox2.Name = "groupBox2";
@@ -264,7 +274,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.lblSaldoActual);
             this.groupBox3.Controls.Add(this.lblSaldo);
             this.groupBox3.Controls.Add(this.txtSaldoActual);
@@ -274,7 +284,7 @@
             this.groupBox3.Controls.Add(this.ltbRetiros);
             this.groupBox3.Controls.Add(this.btnNuevo);
             this.groupBox3.Controls.Add(this.txtSaldo);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(15, 396);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox3.Name = "groupBox3";
