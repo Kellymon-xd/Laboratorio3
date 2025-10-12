@@ -92,36 +92,31 @@ namespace Laboratorio3
             dgvNumbers.Columns.Clear();
             dgvNumbers.Rows.Clear();
 
-            int filas = 7;
             int totalNumbers = numeros.Count;
-            int columnas = (int)Math.Ceiling(totalNumbers / (double)filas);
-        
-            for (int c = 0; c < columnas; c++)
-                dgvNumbers.Columns.Add($"col{c}", "");
 
-            dgvNumbers.RowCount = filas;
+            int columnsNeeded = Math.Min(totalNumbers, 15);
+            if (columnsNeeded == 0) columnsNeeded = 1;
 
-            int index = 0;
-            for (int col = 0; col < columnas; col++)
+            int rowsNeeded = (int)Math.Ceiling(totalNumbers / (double)columnsNeeded);
+
+            for (int col = 0; col < columnsNeeded; col++)
             {
-                for (int row = 0; row < filas; row++)
-                {
-                    if (index < totalNumbers)
-                    {
-                        dgvNumbers[col, row].Value = numeros[index++];
-                    }
-                    else
-                    {
-                        dgvNumbers[col, row].Value = null;
-                    }
-                }
+                dgvNumbers.Columns.Add($"Column{col}", $"Col {col + 1}");
+                dgvNumbers.Columns[col].Width = 80;
             }
 
-            dgvNumbers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvNumbers.RowCount = rowsNeeded;
 
-            int altoFila = dgvNumbers.ClientSize.Height / filas;
-            foreach (DataGridViewRow row in dgvNumbers.Rows)
-                row.Height = altoFila;
+            for (int i = 0; i < totalNumbers; i++)
+            {
+                int col = i / rowsNeeded;
+                int row = i % rowsNeeded;
+
+                if (col < dgvNumbers.ColumnCount && row < dgvNumbers.RowCount)
+                {
+                    dgvNumbers[col, row].Value = numeros[i];
+                }
+            }
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
