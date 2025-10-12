@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgregarNumero.cs" />
+    <Compile Include="CuentaBancaria.cs" />
     <Compile Include="E1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +89,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Verificar.cs" />
+    <EmbeddedResource Include="Cuenta de Ahorros.resx" />
     <EmbeddedResource Include="E1.resx">
       <DependentUpon>E1.cs</DependentUpon>
     </EmbeddedResource>
