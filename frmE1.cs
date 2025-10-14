@@ -167,11 +167,20 @@ namespace Laboratorio3
 
                 if (confirm == DialogResult.Yes)
                 {
-                    cuenta.retirar(monto);
-                    cuenta.getDepositosRealizados().Remove(monto);
-                    ltbDepositos.Items.Remove(ltbDepositos.SelectedItem);
-                    txtSaldoActual.Text = cuenta.getMonto().ToString();
-                    MessageBox.Show($"Depósito de {monto} anulado correctamente.");
+                    string resultado = cuenta.retirar(monto);
+                    if (monto<cuenta.getMonto())
+                    {
+                        cuenta.retirar(monto);
+                        cuenta.getDepositosRealizados().Remove(monto);
+                        ltbDepositos.Items.Remove(ltbDepositos.SelectedItem);
+                        txtSaldoActual.Text = cuenta.getMonto().ToString();
+                        MessageBox.Show($"Depósito de {monto} anulado correctamente.");
+                    }
+                    else
+                    {
+                        MessageBox.Show(resultado, "Retiro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                                      
                 }
             }
         }

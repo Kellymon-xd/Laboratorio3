@@ -20,11 +20,12 @@ namespace Laboratorio3
 
         private void btnRegistro_Click(object sender, EventArgs e)
         {
-            if (!this.ValidateChildren() && string.IsNullOrWhiteSpace(txtApellido.Text) && string.IsNullOrWhiteSpace(txtNombre.Text))
+            if (!this.ValidateChildren() || !validadorCampos.EsValido(txtApellido.Text) || !validadorCampos.EsValido(txtNombre.Text))
             {
                 MessageBox.Show("Debe llenar todos los campos.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
 
             ValidarCorreo validadorCorreo = new ValidarCorreo();
             ValidarContraseña validadorContraseña = new ValidarContraseña();
@@ -35,11 +36,13 @@ namespace Laboratorio3
             if (!correoValido)
             {
                 MessageBox.Show("El correo no cumple con los requisitos.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
             if (!contraseñaValida)
             {
                 MessageBox.Show("La contraseña no cumple con los requisitos.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
             if (correoValido && contraseñaValida)
@@ -48,6 +51,7 @@ namespace Laboratorio3
                 string apellido = txtApellido.Text;
                 MessageBox.Show($"Bienvenido/a, {nombre} {apellido}.");
             }
+
         }
 
         // EVENTOS ENTER -------------------------------------------------------------------
