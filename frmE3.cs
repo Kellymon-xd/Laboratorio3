@@ -7,8 +7,6 @@ namespace Laboratorio3
 {
     public partial class frmE3 : Form
     {
-        private float[] ventas;
-        int cantVentas;
         public frmE3()
         {
             InitializeComponent();
@@ -16,65 +14,13 @@ namespace Laboratorio3
 
         private void btnEmpezar_Click(object sender, EventArgs e)
         {
-            Dialogo dlgCant = new Dialogo();
-            dlgCant.Titulo = "Ingrese la cantidad de ventas:";
-
-            if (dlgCant.ShowDialog() == DialogResult.OK)
+            if (VentasDelAño.setVentas())
             {
-                
-                if (int.TryParse(dlgCant.ValorIngresado, out cantVentas) && cantVentas>0)
-                {
-                    ventas = new float[cantVentas];
-                    float valor;
-
-                    for (int i = 0; i < cantVentas; i++)
-                    {
-                        Dialogo dlgVenta = new Dialogo();
-                        dlgVenta.Titulo = $"Ingrese la venta No. {i + 1}:";
-
-                        if (dlgVenta.ShowDialog() == DialogResult.OK)
-                        {
-                            if (float.TryParse(dlgVenta.ValorIngresado, out valor) && valor > 0)
-                            {
-                                float multiplicado = valor * 100;
-                                if (Math.Floor(multiplicado) == multiplicado)
-                                {
-                                    ventas[i] = valor;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Número inválido: máximo 2 decimales.");
-                                    i--;
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Número inválido, intente de nuevo.");
-                                i--;
-                            }
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Entrada cancelada.");
-                            cantVentas = 0;
-                            break;
-
-                        }
-                    }
-                    if (cantVentas > 0)
-                    {
-                        createTables();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Cantidad inválida.");
-                }
+                createTables(VentasDelAño.getVentas());
             }
         }
 
-        private void createTables() {
+        private void createTables(float[] ventas) {
             ventas = ventas.OrderBy(v => v).ToArray();
 
             int columnas = 5;
@@ -127,7 +73,7 @@ namespace Laboratorio3
                 dgvVentasF.Rows.Add(fila);
             }
 
-            txtVentasRealizadas.Text = "" + cantVentas;
+            txtVentasRealizadas.Text = "" + VentasDelAño.getCantVentas();
 
         }
     }
