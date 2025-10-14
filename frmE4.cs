@@ -20,7 +20,7 @@ namespace Laboratorio3
 
         private void btnRegistro_Click(object sender, EventArgs e)
         {
-            if (!this.ValidateChildren())
+            if (!this.ValidateChildren() && string.IsNullOrWhiteSpace(txtApellido.Text) && string.IsNullOrWhiteSpace(txtNombre.Text))
             {
                 MessageBox.Show("Debe llenar todos los campos.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

@@ -4,8 +4,8 @@ using System.Windows.Forms;
 
 public class VentasDelAño{
 
-    private float[] ventas;
-    private int cantVentas;
+    private static float[] ventas;
+    private static int cantVentas;
 
     public static bool setVentas() {
         Dialogo dlgCant = new Dialogo();
