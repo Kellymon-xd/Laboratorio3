@@ -13,9 +13,8 @@ namespace Laboratorio3
 {
     public partial class frmE2 : Form
     {
-        private List<int> numeros = new List<int>();
         private Random random = new Random();
-        private ActualizarGrid actualizarGrid = new ActualizarGrid();
+        private GestorNumeros gestorNum = new GestorNumeros();
         public frmE2()
         {
             InitializeComponent();
@@ -34,63 +33,25 @@ namespace Laboratorio3
             dgvNumbers.ColumnHeadersVisible = false;    
         }
 
-       
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (numeros == null || numeros.Count == 0)
+            if (gestorNum.getNumeros() == null || gestorNum.getNumeros().Count == 0)
             {
                 MessageBox.Show("No hay números para eliminar.");
                 return;
             }
-
-            Dialogo dlgEliminar = new Dialogo();
-            dlgEliminar.Titulo = "Ingrese el número a eliminar:";
-
-            dlgEliminar.AplicarEstiloForm(this);
-            dlgEliminar.AplicarEstiloBoton(dlgEliminar, Color.LavenderBlush);
-
-            if (dlgEliminar.ShowDialog() == DialogResult.OK)
+            else if (gestorNum.eliminarNum(this))
             {
-                int numeroEliminar;
-                if (int.TryParse(dlgEliminar.ValorIngresado, out numeroEliminar)
-                    && numeros.Contains(numeroEliminar))
-                {
-                    var resultado = MessageBox.Show(
-                        $"¿Está seguro que desea eliminar el número {numeroEliminar}?",
-                        "Confirmar eliminación",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question
-                    );
-
-                    if (resultado == DialogResult.Yes)
-                    {
-                        int eliminados = numeros.RemoveAll(x => x == numeroEliminar);
-
-                        if (eliminados > 0)
-                        {
-                            MessageBox.Show($"Se eliminaron {eliminados} coincidencias del número {numeroEliminar}.");
-                            txtNumero.Clear();
-                            txtNumero.Focus();
-                            ActualizarGrid();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se encontró el número en la lista.");
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Número inválido o no encontrado.");
-                }
+                txtNumero.Clear();
+                txtNumero.Focus();
+                ActualizarGrid();
             }
         }
 
 
         private void ActualizarGrid()
         {
-            actualizarGrid.ActualizarGrids(dgvNumbers, numeros);
+            gestorNum.ActualizarGrids(dgvNumbers);
         }
 
 
@@ -100,47 +61,14 @@ namespace Laboratorio3
             {
                 if (rdbAleatorio.Checked)
                 {
-
-                    numeros.Clear();
-                    for (int i = 0; i < cantidad; i++)
-                    {
-                        numeros.Add(random.Next(1, 101));
-                    }
+                    gestorNum.agregarNumAleatorio(cantidad);
                     ActualizarGrid();
                     txtCantidad.Clear();
                 }
 
                 else if (rdbManual.Checked)
-                {
-                    for (int i = 0; i < cantidad; i++)
-                    {
-                        Dialogo dlgNumero = new Dialogo();
-                        dlgNumero.Titulo = $"Ingrese el valor No. {i + 1}:";
-                        dlgNumero.AplicarEstiloForm(this);
-                        dlgNumero.AplicarEstiloBoton(dlgNumero, Color.LavenderBlush);
-
-                        if (dlgNumero.ShowDialog() == DialogResult.OK)
-                        {
-                            if (int.TryParse(dlgNumero.ValorIngresado, out int valor) && valor > 0)
-                            {
-                                numeros.Add(valor);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Número inválido, intente de nuevo.");
-                                i--;
-                            }
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Entrada cancelada.");
-                            cantidad = 0;
-                            break;
-
-                        }
-                    }
-                    if (cantidad != 0) {
+                {   
+                    if (gestorNum.agregarNumManual(cantidad, this)) {
                         txtNumero.Clear();
                         txtNumero.Focus();
                         ActualizarGrid();
@@ -204,7 +132,7 @@ namespace Laboratorio3
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             {
-                numeros.Clear();
+                gestorNum.getNumeros().Clear();
                 ActualizarGrid();
                 MessageBox.Show("Borrar lista de numeros!!",
                     "Hermano! Has borrado la lista de numeros!!", MessageBoxButtons.OK,
@@ -216,7 +144,7 @@ namespace Laboratorio3
         {
             if (int.TryParse(txtNumero.Text, out int numero))
             {
-                numeros.Add(numero);
+                gestorNum.getNumeros().Add(numero);
                 txtNumero.Clear();
                 txtNumero.Focus();
                 ActualizarGrid();

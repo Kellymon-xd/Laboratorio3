@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActualizarGrid.cs" />
+    <Compile Include="GestorNumeros.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="CuentaBancaria.cs" />
     <Compile Include="frmE1.cs">
       <SubType>Form</SubType>
