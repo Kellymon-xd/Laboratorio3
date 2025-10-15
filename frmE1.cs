@@ -112,7 +112,7 @@ namespace Laboratorio3
 
             if (dlgMonto.ShowDialog() == DialogResult.OK)
             {
-                if (float.TryParse(dlgMonto.ValorIngresado, out float montoOperacion) || montoOperacion > 0)
+                if (float.TryParse(dlgMonto.ValorIngresado, out float montoOperacion) && montoOperacion > 0)
                 {
                     float multiplicado = montoOperacion * 100;
                     if (Math.Floor(multiplicado) == multiplicado)
@@ -170,7 +170,6 @@ namespace Laboratorio3
                     string resultado = cuenta.retirar(monto);
                     if (monto<cuenta.getMonto())
                     {
-                        cuenta.retirar(monto);
                         cuenta.getDepositosRealizados().Remove(monto);
                         ltbDepositos.Items.Remove(ltbDepositos.SelectedItem);
                         txtSaldoActual.Text = cuenta.getMonto().ToString();
@@ -198,10 +197,9 @@ namespace Laboratorio3
 
                 if (confirm == DialogResult.Yes)
                 {
-                    string resultado = cuenta.retirar(monto);
-                    if (resultado.StartsWith("Retiro exitoso"))
+                    string resultado = cuenta.depositar(monto);
+                    if (!resultado.StartsWith("El monto a depositar debe ser mayor a 0"))
                     {
-                        cuenta.depositar(monto);
                         cuenta.getRetirosRealizados().Remove(monto);
                         ltbRetiros.Items.Remove(ltbRetiros.SelectedItem);
                         txtSaldoActual.Text = cuenta.getMonto().ToString();

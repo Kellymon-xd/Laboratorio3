@@ -59,7 +59,7 @@ namespace Laboratorio3
 
         public String retirar(float retiro)
         {
-            if(retiro>monto && retiro>0)
+            if(retiro>monto || retiro<0)
             {
                 return "Fondos insuficientes";
             }
